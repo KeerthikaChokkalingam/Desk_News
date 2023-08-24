@@ -23,6 +23,9 @@
 		3787E93A2A96064200592C93 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3787E9382A96064200592C93 /* CategoryCollectionViewCell.xib */; };
 		3787E93D2A96065E00592C93 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787E93B2A96065E00592C93 /* NewsFeedTableViewCell.swift */; };
 		3787E93E2A96065E00592C93 /* NewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3787E93C2A96065E00592C93 /* NewsFeedTableViewCell.xib */; };
+		379BBFED2A9774790066788F /* Helvetica Neu Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 379BBFEC2A9774790066788F /* Helvetica Neu Bold.ttf */; };
+		379BBFEF2A9774DC0066788F /* HelveticaNeue Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 379BBFEE2A9774DC0066788F /* HelveticaNeue Medium.ttf */; };
+		379BBFF12A9775110066788F /* HelveticaNeue Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 379BBFF02A9775110066788F /* HelveticaNeue Thin.ttf */; };
 		37B6A6552A94C025007314F7 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6A6542A94C025007314F7 /* AppConstant.swift */; };
 		37B6A6572A94E3A7007314F7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6A6562A94E3A7007314F7 /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +68,9 @@
 		3787E9382A96064200592C93 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		3787E93B2A96065E00592C93 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		3787E93C2A96065E00592C93 /* NewsFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedTableViewCell.xib; sourceTree = "<group>"; };
+		379BBFEC2A9774790066788F /* Helvetica Neu Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Neu Bold.ttf"; sourceTree = "<group>"; };
+		379BBFEE2A9774DC0066788F /* HelveticaNeue Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeue Medium.ttf"; sourceTree = "<group>"; };
+		379BBFF02A9775110066788F /* HelveticaNeue Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeue Thin.ttf"; sourceTree = "<group>"; };
 		37B6A6542A94C025007314F7 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		37B6A6562A94E3A7007314F7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +131,7 @@
 				37B6A65B2A94E3E8007314F7 /* API Handler */,
 				377537D82A962E310030B863 /* Utils */,
 				37B6A65D2A94E508007314F7 /* Constants */,
+				379BBFE92A9773DC0066788F /* Font */,
 				377537D72A962D9C0030B863 /* Resource */,
 				376EE1FD2A94B4A9000611A9 /* Info.plist */,
 			);
@@ -191,6 +198,16 @@
 				3787E93C2A96065E00592C93 /* NewsFeedTableViewCell.xib */,
 			);
 			path = "Xib's";
+			sourceTree = "<group>";
+		};
+		379BBFE92A9773DC0066788F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				379BBFF02A9775110066788F /* HelveticaNeue Thin.ttf */,
+				379BBFEE2A9774DC0066788F /* HelveticaNeue Medium.ttf */,
+				379BBFEC2A9774790066788F /* Helvetica Neu Bold.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		37B6A6582A94E3CF007314F7 /* Model */ = {
@@ -338,11 +355,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379BBFED2A9774790066788F /* Helvetica Neu Bold.ttf in Resources */,
 				3787E93A2A96064200592C93 /* CategoryCollectionViewCell.xib in Resources */,
 				3787E93E2A96065E00592C93 /* NewsFeedTableViewCell.xib in Resources */,
 				376EE1FC2A94B4A9000611A9 /* LaunchScreen.storyboard in Resources */,
 				376EE1F92A94B4A9000611A9 /* Assets.xcassets in Resources */,
+				379BBFEF2A9774DC0066788F /* HelveticaNeue Medium.ttf in Resources */,
 				376EE1F72A94B4A9000611A9 /* Main.storyboard in Resources */,
+				379BBFF12A9775110066788F /* HelveticaNeue Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
