@@ -21,6 +21,7 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
         registerCells()
+        APIHandler().GetNewsApiCall()
     }
     
 }
@@ -30,11 +31,14 @@ extension DashboardViewController {
         categoriesCollections.register(UINib(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
     }
     func setUpUI() {
+        selectedCategoryLabel.text = "sdfghjkl"
         categoriesCollections.delegate = self
         categoriesCollections.dataSource = self
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         categoriesCollections.collectionViewLayout = flowLayout
+//        print(UIFont.familyNames)
+//        selectedCategoryLabel.font = Utils().getRegularFont(type: AppConstant.boldFont, size: 18)
     }
 }
 

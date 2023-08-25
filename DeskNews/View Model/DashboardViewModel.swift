@@ -9,4 +9,6 @@ import Foundation
 
 class DashboardViewModel {
     
+//    var APIResponseModel = APIResponseStruct
+    
 }
