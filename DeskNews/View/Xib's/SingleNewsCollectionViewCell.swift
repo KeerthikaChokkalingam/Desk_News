@@ -17,6 +17,8 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     func loadValues(apiResponse: APIDataStruct) {
+        newsImageView.layer.cornerRadius = 15
+        
         Utils().downloadImage(from: ((apiResponse.image ?? apiResponse.url))!) { [weak self] image in
             DispatchQueue.main.async {
                 self?.newsImageView.image = image

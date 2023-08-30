@@ -16,6 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="m5y-yC-vTL" kind="relationship" relationship="viewControllers" id="j2P-hT-xvZ"/>
@@ -39,14 +41,14 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-Rg-uM7">
-                                        <rect key="frame" x="0.0" y="707" width="393" height="3"/>
-                                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                        <rect key="frame" x="0.0" y="708.66666666666663" width="393" height="1.3333333333333712"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="3" id="8pd-8N-ieL"/>
+                                            <constraint firstAttribute="height" constant="1.5" id="8pd-8N-ieL"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Rl-fw-aEF">
-                                        <rect key="frame" x="0.0" y="45" width="393" height="662"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Rl-fw-aEF">
+                                        <rect key="frame" x="0.0" y="55" width="393" height="653.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desk News App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK6-s3-bvq">
@@ -63,7 +65,7 @@
                                 <constraints>
                                     <constraint firstItem="wK6-s3-bvq" firstAttribute="leading" secondItem="HDt-Oy-Ezf" secondAttribute="leading" id="A5P-8m-67i"/>
                                     <constraint firstAttribute="trailing" secondItem="wK6-s3-bvq" secondAttribute="trailing" id="CNJ-Sz-5yf"/>
-                                    <constraint firstItem="6Rl-fw-aEF" firstAttribute="top" secondItem="wK6-s3-bvq" secondAttribute="bottom" constant="10" id="R1T-1X-2sj"/>
+                                    <constraint firstItem="6Rl-fw-aEF" firstAttribute="top" secondItem="wK6-s3-bvq" secondAttribute="bottom" constant="20" id="R1T-1X-2sj"/>
                                     <constraint firstItem="m6X-Rg-uM7" firstAttribute="leading" secondItem="HDt-Oy-Ezf" secondAttribute="leading" id="SPA-dd-cMr"/>
                                     <constraint firstAttribute="trailing" secondItem="6Rl-fw-aEF" secondAttribute="trailing" id="WhT-NQ-mBT"/>
                                     <constraint firstAttribute="trailing" secondItem="m6X-Rg-uM7" secondAttribute="trailing" id="irY-Aw-qWb"/>
@@ -96,7 +98,7 @@
         <scene sceneID="9lz-y5-jpg">
             <objects>
                 <navigationController navigationBarHidden="YES" id="m5y-yC-vTL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="c2U-bR-5es"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="c2U-bR-5es"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZMx-7d-MvX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -112,7 +114,7 @@
         <scene sceneID="AOp-1l-KN3">
             <objects>
                 <navigationController navigationBarHidden="YES" id="dfg-2g-KMe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass.circle" catalog="system" id="Izc-xb-MHa"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass.circle" catalog="system" selectedImage="magnifyingglass.circle.fill" id="Izc-xb-MHa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vl2-b2-4cH">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -144,7 +146,7 @@
         <scene sceneID="lsj-fZ-Lhs">
             <objects>
                 <navigationController navigationBarHidden="YES" id="2eE-Ez-dxK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="bookmark" catalog="system" id="SpI-aU-n3u"/>
+                    <tabBarItem key="tabBarItem" title="" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="SpI-aU-n3u"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J2z-TL-myW">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -281,13 +283,16 @@
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
+        <image name="bookmark.fill" catalog="system" width="110" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

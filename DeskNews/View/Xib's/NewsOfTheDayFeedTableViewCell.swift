@@ -26,6 +26,7 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     func setUpUI() {
         backGroundView.layer.cornerRadius = 25
         contentImageView.layer.cornerRadius = 25
+        newsDayView.clipsToBounds = true
         newsDayView.layer.cornerRadius = 20
         newsOfDayLabel.layer.cornerRadius = 20
     }

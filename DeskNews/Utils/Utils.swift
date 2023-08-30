@@ -64,7 +64,7 @@ class Utils {
             indicator.stopAnimating()
         }
     }
-  
+    
     func dateFromISO8601String(_ dateString: String) -> Date? {
         let dateFormatter = ISO8601DateFormatter()
         return dateFormatter.date(from: dateString)
