@@ -10,6 +10,7 @@
 		3715DA872A986AB8008AFD0F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715DA862A986AB8008AFD0F /* Utils.swift */; };
 		3715DA892A988697008AFD0F /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715DA882A988697008AFD0F /* APIHandler.swift */; };
 		3715DA8B2A98C6A0008AFD0F /* NetworkConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715DA8A2A98C6A0008AFD0F /* NetworkConnectionHandler.swift */; };
+		3731BFD22AA0923F0072FEDF /* SearchTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3731BFD12AA0923F0072FEDF /* SearchTabViewController.swift */; };
 		3769E6642A9F36640066E4E1 /* HomeDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3769E6632A9F36640066E4E1 /* HomeDashboardViewController.swift */; };
 		3769E6672A9F48EC0066E4E1 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3769E6652A9F48EC0066E4E1 /* TitleTableViewCell.swift */; };
 		3769E6682A9F48EC0066E4E1 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3769E6662A9F48EC0066E4E1 /* TitleTableViewCell.xib */; };
@@ -57,6 +58,7 @@
 		3715DA862A986AB8008AFD0F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3715DA882A988697008AFD0F /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		3715DA8A2A98C6A0008AFD0F /* NetworkConnectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionHandler.swift; sourceTree = "<group>"; };
+		3731BFD12AA0923F0072FEDF /* SearchTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabViewController.swift; sourceTree = "<group>"; };
 		3769E6632A9F36640066E4E1 /* HomeDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardViewController.swift; sourceTree = "<group>"; };
 		3769E6652A9F48EC0066E4E1 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		3769E6662A9F48EC0066E4E1 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				376EE1F32A94B4A9000611A9 /* ViewController.swift */,
 				37B6A6562A94E3A7007314F7 /* DashboardViewController.swift */,
 				3769E6632A9F36640066E4E1 /* HomeDashboardViewController.swift */,
+				3731BFD12AA0923F0072FEDF /* SearchTabViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				3787E93D2A96065E00592C93 /* NewsOfTheDayFeedTableViewCell.swift in Sources */,
 				3715DA8B2A98C6A0008AFD0F /* NetworkConnectionHandler.swift in Sources */,
 				37B6A6552A94C025007314F7 /* AppConstant.swift in Sources */,
+				3731BFD22AA0923F0072FEDF /* SearchTabViewController.swift in Sources */,
 				3715DA872A986AB8008AFD0F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S9H8WZG98K;
@@ -606,6 +611,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Keerthika-Chokkalingam.DeskNews";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -617,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S9H8WZG98K;
@@ -636,6 +643,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Keerthika-Chokkalingam.DeskNews";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

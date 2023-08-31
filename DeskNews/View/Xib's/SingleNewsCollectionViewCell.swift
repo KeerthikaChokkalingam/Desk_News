@@ -17,9 +17,11 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        previewButton.isHidden = true
     }
     func loadValues(apiResponse: APIDataStruct) {
         newsImageView.clipsToBounds = true
+        previewButton.isHidden = false
         newsImageView.contentMode = .scaleAspectFill
         newsImageView.layer.cornerRadius = 15
         previewButton.layer.cornerRadius = 15

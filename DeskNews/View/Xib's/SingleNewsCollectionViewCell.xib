@@ -63,12 +63,12 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="titleEdgeInsets" minX="-130" minY="95" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="-30" maxX="-200" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-104" minY="95" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="-30" maxX="-180" maxY="0.0"/>
                                 <state key="normal" title="No Preview Image Avilable">
                                     <color key="titleColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                     <imageReference key="image" image="photo" catalog="system" symbolScale="medium"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="90" scale="medium" weight="semibold"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="73" scale="medium" weight="semibold"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" systemColor="systemYellowColor"/>

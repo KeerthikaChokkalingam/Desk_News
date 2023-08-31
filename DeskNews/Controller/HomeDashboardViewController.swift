@@ -21,6 +21,11 @@ class HomeDashboardViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        if apiDataValues.title == nil {
+            getNewsApiCall()
+        }
+    }
 }
 extension HomeDashboardViewController {
     func setUpUI() {
@@ -48,6 +53,7 @@ extension HomeDashboardViewController {
             let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                     UIAlertAction in
+                Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
                 controller.dismiss(animated: true)
                 }
             controller.addAction(okAction)
@@ -69,6 +75,7 @@ extension HomeDashboardViewController {
             let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                     UIAlertAction in
+                Utils().endLoading(sender: self.indicator, wholeView: self.view ?? UIView())
                 controller.dismiss(animated: true)
                 }
             controller.addAction(okAction)
@@ -80,7 +87,9 @@ extension HomeDashboardViewController {
     }
     func seperateDataReloadTable() {
         apiDataValues = responseNews?.data[0] ?? apiDataValues
-        apiDataCollectionValues = responseNews?.data ?? apiDataCollectionValues
+        let filter = responseNews?.data.filter{$0.title != apiDataValues.title }
+        print(filter)
+        apiDataCollectionValues = filter ?? apiDataCollectionValues
         DispatchQueue.main.async {
             self.liveNewsList.reloadData()
         }
