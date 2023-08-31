@@ -17,6 +17,7 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var backGroundView: UIView!
     override func awakeFromNib() {
         newsDayView.isHidden = true
+        learnMoreButton.isHidden = true
         super.awakeFromNib()
     }
 
@@ -25,10 +26,12 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     }
     func setUpUI() {
         newsDayView.isHidden = false
+        learnMoreButton.isHidden = false
         backGroundView.layer.cornerRadius = 25
         contentImageView.layer.cornerRadius = 25
         newsDayView.clipsToBounds = true
         newsDayView.layer.cornerRadius = 20
+        learnMoreButton.layer.cornerRadius = 20
         newsOfDayLabel.layer.cornerRadius = 20
     }
     func updateCell(apiResponse: APIDataStruct) {

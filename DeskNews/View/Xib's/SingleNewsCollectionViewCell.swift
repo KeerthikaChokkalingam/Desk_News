@@ -9,20 +9,31 @@ import UIKit
 
 class SingleNewsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var previewButton: UIButton!
     @IBOutlet weak var newsAuthorNameLabel: UILabel!
     @IBOutlet weak var newsPublishedTimeLabel: UILabel!
     @IBOutlet weak var newsTitleLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     func loadValues(apiResponse: APIDataStruct) {
+        newsImageView.clipsToBounds = true
+        newsImageView.contentMode = .scaleAspectFill
         newsImageView.layer.cornerRadius = 15
-        
-        Utils().downloadImage(from: ((apiResponse.image ?? apiResponse.url))!) { [weak self] image in
-            DispatchQueue.main.async {
-                self?.newsImageView.image = image
+        previewButton.layer.cornerRadius = 15
+        if apiResponse.image != nil  {
+            previewButton.isHidden = true
+            newsImageView.isHidden = false
+            Utils().downloadImage(from: ((apiResponse.image!))) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.newsImageView.image = image
+                }
             }
+        } else {
+            newsImageView.isHidden = true
+            previewButton.isHidden = false
         }
         newsAuthorNameLabel.text = apiResponse.author
         newsTitleLabel.text = apiResponse.title

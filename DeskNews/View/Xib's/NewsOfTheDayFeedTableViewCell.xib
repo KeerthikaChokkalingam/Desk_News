@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -28,13 +29,13 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News of the day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6P-bf-W3j">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.78431372549019607" green="1" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.78431372549019607" green="1" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="NZr-6h-jtR"/>
                                     <constraint firstItem="D6P-bf-W3j" firstAttribute="top" secondItem="DPP-Yk-X3R" secondAttribute="top" id="R0S-uN-JVZ"/>
@@ -45,23 +46,24 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwE-LR-Pj8">
-                                <rect key="frame" x="18" y="129" width="295" height="94"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="18" y="129" width="295" height="89"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UvU-3c-mHK">
-                                <rect key="frame" x="0.0" y="223" width="150" height="35"/>
+                                <rect key="frame" x="15" y="218" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.78431372549019607" green="1" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="AMg-ko-emP"/>
+                                    <constraint firstAttribute="height" constant="40" id="AMg-ko-emP"/>
                                     <constraint firstAttribute="width" constant="150" id="B2i-4E-oDu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="120" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Learn More" image="arrow.right" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                         </subviews>
@@ -74,14 +76,15 @@
                             <constraint firstItem="IwE-LR-Pj8" firstAttribute="top" secondItem="DPP-Yk-X3R" secondAttribute="bottom" id="R3D-dO-6w2"/>
                             <constraint firstItem="LTd-U2-Vki" firstAttribute="top" secondItem="e6e-Fg-s52" secondAttribute="top" id="dQa-il-Cue"/>
                             <constraint firstAttribute="bottom" secondItem="LTd-U2-Vki" secondAttribute="bottom" id="eKV-iE-bTE"/>
+                            <constraint firstItem="UvU-3c-mHK" firstAttribute="leading" secondItem="DPP-Yk-X3R" secondAttribute="leading" id="kuR-K1-bEZ"/>
                             <constraint firstAttribute="trailing" secondItem="LTd-U2-Vki" secondAttribute="trailing" id="lQr-JF-LI9"/>
                             <constraint firstItem="DPP-Yk-X3R" firstAttribute="leading" secondItem="e6e-Fg-s52" secondAttribute="leading" constant="15" id="mFO-is-U5q"/>
                             <constraint firstAttribute="trailing" secondItem="IwE-LR-Pj8" secondAttribute="trailing" constant="20" id="r5f-PH-7M9"/>
-                            <constraint firstItem="UvU-3c-mHK" firstAttribute="leading" secondItem="e6e-Fg-s52" secondAttribute="leading" id="v8J-ot-7EM"/>
                             <constraint firstItem="DPP-Yk-X3R" firstAttribute="centerY" secondItem="LTd-U2-Vki" secondAttribute="centerY" constant="-30" id="xo9-Eo-VcA"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="e6e-Fg-s52" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="60c-rn-1ic"/>
                     <constraint firstAttribute="bottom" secondItem="e6e-Fg-s52" secondAttribute="bottom" constant="1" id="ApB-BM-o54"/>

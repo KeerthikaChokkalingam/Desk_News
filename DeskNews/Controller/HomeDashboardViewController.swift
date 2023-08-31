@@ -118,11 +118,11 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0 :
-            return 360
+            return 355
         case 1:
-            return 55
+            return 50
         default:
-            return 250
+            return 260
         }
     }
 }
