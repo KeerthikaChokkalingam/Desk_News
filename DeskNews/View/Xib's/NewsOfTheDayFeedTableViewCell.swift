@@ -16,14 +16,15 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var contentImageView: UIImageView!
     @IBOutlet weak var backGroundView: UIView!
     override func awakeFromNib() {
+        newsDayView.isHidden = true
         super.awakeFromNib()
-        setUpUI()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     func setUpUI() {
+        newsDayView.isHidden = false
         backGroundView.layer.cornerRadius = 25
         contentImageView.layer.cornerRadius = 25
         newsDayView.clipsToBounds = true
@@ -31,6 +32,7 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
         newsOfDayLabel.layer.cornerRadius = 20
     }
     func updateCell(apiResponse: APIDataStruct) {
+        setUpUI()
         newsContentLabel.text = apiResponse.title
         contentImageView.contentMode = .scaleAspectFill
         Utils().downloadImage(from: ((apiResponse.image ?? apiResponse.url))!) { [weak self] image in

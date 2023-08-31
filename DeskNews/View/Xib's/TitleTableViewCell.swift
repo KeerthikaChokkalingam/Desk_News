@@ -9,6 +9,7 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var liveNewsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

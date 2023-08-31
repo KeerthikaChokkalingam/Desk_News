@@ -29,10 +29,30 @@ extension HomeDashboardViewController {
         liveNewsList.register(UINib(nibName: "NewsOfTheDayFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsOfTheDayFeedTableViewCell")
         liveNewsList.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTableViewCell")
         liveNewsList.register(UINib(nibName: "LiveNewsContentTableViewCell", bundle: nil), forCellReuseIdentifier: "LiveNewsContentTableViewCell")
-        let refresher = Utils().addRefreshController(sender: liveNewsList)
-        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         indicator = Utils().setUpLoader(sender: view)
         getNewsApiCall()
+        let refresher = Utils().addRefreshController(sender: liveNewsList)
+        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    func pullToRefreshApiCall() {
+        if NetworkConnectionHandler().checkReachable() {
+            viewModel = DashboardViewModel()
+            viewModel?.GetNewsForDashboardApiCall(data: APIConstants.dashboardApiUrl,completion: { [weak self] in
+                self?.responseNews = self?.viewModel?.aPIResponseModel
+                self?.seperateDataReloadTable()
+                DispatchQueue.main.async {
+                    Utils().endRefreshController(sender: self?.liveNewsList ?? UITableView())
+                }
+            })
+        } else {
+            let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                    UIAlertAction in
+                controller.dismiss(animated: true)
+                }
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
+        }
     }
     func getNewsApiCall() {
         if NetworkConnectionHandler().checkReachable() {
@@ -49,9 +69,6 @@ extension HomeDashboardViewController {
             let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                     UIAlertAction in
-                self.indicator.isHidden = true
-                self.indicator.hidesWhenStopped = true
-                self.indicator.stopAnimating()
                 controller.dismiss(animated: true)
                 }
             controller.addAction(okAction)
@@ -59,14 +76,13 @@ extension HomeDashboardViewController {
         }
     }
     @objc func refresh() {
-        getNewsApiCall()
+        pullToRefreshApiCall()
     }
     func seperateDataReloadTable() {
         apiDataValues = responseNews?.data[0] ?? apiDataValues
         apiDataCollectionValues = responseNews?.data ?? apiDataCollectionValues
         DispatchQueue.main.async {
             self.liveNewsList.reloadData()
-            Utils().endRefreshController(sender: self.liveNewsList)
         }
     }
 }
@@ -85,6 +101,10 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as? TitleTableViewCell else {return UITableViewCell()}
+            if apiDataValues.title != nil {
+                cell.liveNewsLabel.font = UIFont.boldSystemFont(ofSize: 17)
+                cell.liveNewsLabel.text = "LiveNews"
+            }
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LiveNewsContentTableViewCell", for: indexPath) as? LiveNewsContentTableViewCell else {return UITableViewCell()}
