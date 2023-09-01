@@ -7,6 +7,7 @@
 
 import Foundation
 import SystemConfiguration
+import Network
 
 class NetworkConnectionHandler {
     private let mReachability = SCNetworkReachabilityCreateWithName(nil, "https://www.google.com")

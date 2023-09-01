@@ -15,8 +15,9 @@ class Utils {
         return UIFont(name: type, size: size) ?? UIFont()
     }
     
-    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
+    func downloadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
+        let newUrl = URL(string: url)!
+        URLSession.shared.dataTask(with: newUrl) { data, response, error in
             if let error = error {
                 print("Error downloading image: \(error)")
                 completion(nil)
@@ -91,5 +92,10 @@ class Utils {
         
         return formatter.string(from: date, to: now) ?? ""
     }
-    
+    func isValidURL(_ urlString: String) -> Bool {
+        if let url = URL(string: urlString) {
+            return UIApplication.shared.canOpenURL(url)
+        }
+        return false
+    }
 }

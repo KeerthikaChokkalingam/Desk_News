@@ -25,7 +25,8 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
         newsImageView.contentMode = .scaleAspectFill
         newsImageView.layer.cornerRadius = 15
         previewButton.layer.cornerRadius = 15
-        if apiResponse.image != nil  {
+        let urlString = apiResponse.image?.description
+        if urlString != nil && Utils().isValidURL((urlString!)) {
             previewButton.isHidden = true
             newsImageView.isHidden = false
             Utils().downloadImage(from: ((apiResponse.image!))) { [weak self] image in
@@ -38,12 +39,15 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
             previewButton.isHidden = false
         }
         newsAuthorNameLabel.text = apiResponse.author
+        if apiResponse.author == "" || apiResponse.author == nil {
+            newsAuthorNameLabel.text = "No Author"
+        }
         newsTitleLabel.text = apiResponse.title
-        let dateString = Utils().dateFromISO8601String(apiResponse.published_at ?? "")
+        let dateString = Utils().dateFromISO8601String(apiResponse.publishedAt ?? "")
         let startDate = dateString ?? Date()
         let endDate = Date.now
         let timeInterval = endDate.timeIntervalSince(startDate)
-        let someDate = Date(timeIntervalSinceNow: -(timeInterval))
+        let someDate = Date(timeIntervalSinceNow: TimeInterval(-(timeInterval)))
         let timeAgoString = Utils().timeAgoSinceDate(someDate)
         if timeAgoString != "Just now" {
             newsPublishedTimeLabel.text = timeAgoString + " ago"

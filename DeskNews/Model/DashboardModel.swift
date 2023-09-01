@@ -17,11 +17,6 @@ struct APIRequestStruct: Codable {
         case accessKey = "access_key"
     }
 }
-struct APIResponseStruct: Codable {
-    var responseCode: Int
-    var responseMessage: String
-    var responseBody: PaginationStruct
-}
 struct PaginationStruct: Codable {
     var pagination: APIResponseBody
     var data: [APIDataStruct]
@@ -36,12 +31,16 @@ struct APIDataStruct: Codable {
     var author: String?
     var title: String?
     var description: String?
-    var url: URL?
+    var url: String?
     var source: String?
-    var image: URL?
+    var image: String?
     var category: String?
     var language: String?
     var country: String?
-    var published_at: String?
-}
+    var publishedAt: String?
 
+    enum CodingKeys: String, CodingKey {
+        case author, title, description, url, source, image, category, language, country
+        case publishedAt = "published_at"
+    }
+}

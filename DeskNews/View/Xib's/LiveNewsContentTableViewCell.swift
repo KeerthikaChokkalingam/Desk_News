@@ -54,7 +54,11 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 210, height: 250)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return CGSize(width: 420, height: 380)
+        } else {
+            return CGSize(width: 210, height: 250)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

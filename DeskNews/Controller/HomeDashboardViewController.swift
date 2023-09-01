@@ -13,7 +13,7 @@ class HomeDashboardViewController: UIViewController {
     
     var viewModel: DashboardViewModel?
     var responseNews: PaginationStruct?
-    var apiDataValues = APIDataStruct()
+    var apiDataValues: APIDataStruct?
     var apiDataCollectionValues = [APIDataStruct]()
     var indicator = UIActivityIndicatorView()
     
@@ -22,7 +22,7 @@ class HomeDashboardViewController: UIViewController {
         setUpUI()
     }
     override func viewWillAppear(_ animated: Bool) {
-        if apiDataValues.title == nil {
+        if apiDataValues?.title == nil  {
             getNewsApiCall()
         }
     }
@@ -45,9 +45,6 @@ extension HomeDashboardViewController {
             viewModel?.GetNewsForDashboardApiCall(data: APIConstants.dashboardApiUrl,completion: { [weak self] in
                 self?.responseNews = self?.viewModel?.aPIResponseModel
                 self?.seperateDataReloadTable()
-                DispatchQueue.main.async {
-                    Utils().endRefreshController(sender: self?.liveNewsList ?? UITableView())
-                }
             })
         } else {
             let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
@@ -67,9 +64,6 @@ extension HomeDashboardViewController {
             viewModel?.GetNewsForDashboardApiCall(data: APIConstants.dashboardApiUrl,completion: { [weak self] in
                 self?.responseNews = self?.viewModel?.aPIResponseModel
                 self?.seperateDataReloadTable()
-                DispatchQueue.main.async {
-                    Utils().endLoading(sender: self!.indicator, wholeView: self?.view ?? UIView())
-                }
             })
         } else {
             let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
@@ -86,11 +80,19 @@ extension HomeDashboardViewController {
         pullToRefreshApiCall()
     }
     func seperateDataReloadTable() {
-        apiDataValues = responseNews?.data[0] ?? apiDataValues
-        let filter = responseNews?.data.filter{$0.title != apiDataValues.title }
-        print(filter)
-        apiDataCollectionValues = filter ?? apiDataCollectionValues
+        let collectionFilter = responseNews?.data.filter{$0.image != nil && $0.image != ""}
+        apiDataValues = collectionFilter?.first
+        let filter = collectionFilter?.filter{$0.title != apiDataValues?.title}
+        var unique = [APIDataStruct]()
+        for arrValue in filter ?? [APIDataStruct]() {
+            if !unique.contains(where: { $0.title == arrValue.title }) {
+                unique.append(arrValue)
+            }
+        }
+        apiDataCollectionValues = unique
         DispatchQueue.main.async {
+            Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
+            Utils().endLoading(sender: self.indicator, wholeView: self.view ?? UIView())
             self.liveNewsList.reloadData()
         }
     }
@@ -104,13 +106,13 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
         switch indexPath.row {
         case 0 :
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsOfTheDayFeedTableViewCell", for: indexPath) as? NewsOfTheDayFeedTableViewCell else {return UITableViewCell()}
-            if apiDataValues.title != nil {
-                cell.updateCell(apiResponse: apiDataValues)
+            if apiDataValues?.title != nil {
+                cell.updateCell(apiResponse: apiDataValues!)
             }
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as? TitleTableViewCell else {return UITableViewCell()}
-            if apiDataValues.title != nil {
+            if apiDataValues?.title != nil {
                 cell.liveNewsLabel.font = UIFont.boldSystemFont(ofSize: 17)
                 cell.liveNewsLabel.text = "LiveNews"
             }
@@ -127,11 +129,23 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0 :
-            return 355
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 550
+            } else {
+                return 355
+            }
         case 1:
-            return 50
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 100
+            } else {
+                return 50
+            }
         default:
-            return 260
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 380
+            } else {
+                return 260
+            }
         }
     }
 }
