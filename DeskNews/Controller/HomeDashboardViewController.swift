@@ -19,11 +19,11 @@ class HomeDashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+//        setUpUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         if apiDataValues?.title == nil  {
-            getNewsApiCall()
+//            getNewsApiCall()
         }
     }
 }
