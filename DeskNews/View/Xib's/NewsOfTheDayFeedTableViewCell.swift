@@ -34,14 +34,42 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
         learnMoreButton.layer.cornerRadius = 20
         newsOfDayLabel.layer.cornerRadius = 20
     }
-    func updateCell(apiResponse: APIDataStruct) {
+    func updateCell(apiResponse: ArticalSet) {
         setUpUI()
         newsContentLabel.text = apiResponse.title
         contentImageView.contentMode = .scaleAspectFill
-        Utils().downloadImage(from: ((apiResponse.image ?? apiResponse.url))!) { [weak self] image in
+        Utils().downloadImage(from: ((apiResponse.urlToImage ?? apiResponse.url))!) { [weak self] image in
             DispatchQueue.main.async {
                 self?.contentImageView.image = image
+                self?.setButtonTextColor(fromImage: image!)
             }
         }
+    }
+    func setButtonTextColor(fromImage image: UIImage) {
+        guard let ciImage = CIImage(image: image) else {
+            return
+        }
+        let context = CIContext(options: nil)
+        let roiRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        let renderedImage = context.createCGImage(ciImage, from: roiRect)
+        let averageColor = renderedImage?.averageColor ?? .white
+        let textColor: UIColor = averageColor.isLight ? (UIColor().hexStringToUIColor(hex: "003b4a")) : .white
+        newsContentLabel.textColor = textColor
+        newsDayView.backgroundColor = textColor
+        newsOfDayLabel.backgroundColor = textColor
+        learnMoreButton.backgroundColor = textColor
+        if newsOfDayLabel.backgroundColor == .white {
+            newsOfDayLabel.textColor = UIColor().hexStringToUIColor(hex: "003b4a")
+        } else {
+            newsOfDayLabel.textColor = .white
+        }
+        if learnMoreButton.backgroundColor == .white {
+            learnMoreButton.setTitleColor(UIColor().hexStringToUIColor(hex: "003b4a"), for: .normal)
+            learnMoreButton.tintColor = UIColor().hexStringToUIColor(hex: "003b4a")
+        } else {
+            learnMoreButton.setTitleColor(UIColor.white, for: .normal)
+            learnMoreButton.tintColor = .white
+        }
+        
     }
 }

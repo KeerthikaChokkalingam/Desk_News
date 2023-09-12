@@ -11,7 +11,7 @@ class LiveNewsContentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var singleNewsListCollections: UICollectionView!
     
-    var collectionValues = [APIDataStruct]()
+    var collectionValues = [ArticalSet]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +32,7 @@ extension LiveNewsContentTableViewCell {
         singleNewsListCollections.collectionViewLayout = layout
         singleNewsListCollections.register(UINib(nibName: "SingleNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SingleNewsCollectionViewCell")
     }
-    func getValuesFromApiRoadCollections(apiResponse: [APIDataStruct]) {
+    func getValuesFromApiRoadCollections(apiResponse: [ArticalSet]) {
         collectionValues = apiResponse
         DispatchQueue.main.async {
             self.singleNewsListCollections.reloadData()
@@ -57,11 +57,7 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
         if UIDevice.current.userInterfaceIdiom == .pad {
             return CGSize(width: 420, height: 380)
         } else {
-            return CGSize(width: 210, height: 250)
+            return CGSize(width: 230, height: 260)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
     }
 }

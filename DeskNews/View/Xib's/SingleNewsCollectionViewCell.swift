@@ -19,17 +19,17 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         previewButton.isHidden = true
     }
-    func loadValues(apiResponse: APIDataStruct) {
+    func loadValues(apiResponse: ArticalSet) {
         newsImageView.clipsToBounds = true
         previewButton.isHidden = false
         newsImageView.contentMode = .scaleAspectFill
         newsImageView.layer.cornerRadius = 15
         previewButton.layer.cornerRadius = 15
-        let urlString = apiResponse.image?.description
+        let urlString = apiResponse.urlToImage
         if urlString != nil && Utils().isValidURL((urlString!)) {
             previewButton.isHidden = true
             newsImageView.isHidden = false
-            Utils().downloadImage(from: ((apiResponse.image!))) { [weak self] image in
+            Utils().downloadImage(from: ((apiResponse.urlToImage!))) { [weak self] image in
                 DispatchQueue.main.async {
                     self?.newsImageView.image = image
                 }

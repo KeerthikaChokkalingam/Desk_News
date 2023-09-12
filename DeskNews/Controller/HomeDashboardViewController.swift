@@ -12,18 +12,18 @@ class HomeDashboardViewController: UIViewController {
     @IBOutlet weak var liveNewsList: UITableView!
     
     var viewModel: DashboardViewModel?
-    var responseNews: PaginationStruct?
-    var apiDataValues: APIDataStruct?
-    var apiDataCollectionValues = [APIDataStruct]()
+    var responseNews: HeadLinesResponse?
+    var apiDataValues: ArticalSet?
+    var apiDataCollectionValues = [ArticalSet]()
     var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setUpUI()
+        setUpUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         if apiDataValues?.title == nil  {
-//            getNewsApiCall()
+            getNewsApiCall()
         }
     }
 }
@@ -39,52 +39,47 @@ extension HomeDashboardViewController {
         let refresher = Utils().addRefreshController(sender: liveNewsList)
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
+    func apiCall(){
+        viewModel = DashboardViewModel()
+        viewModel?.GetNewsForDashboardApiCall(data: APIConstants.sourceUrl,completion: { [weak self] in
+            self?.responseNews = self?.viewModel?.aPIResponseModel
+            self?.seperateDataReloadTable()
+        })
+    }
+    func internetFailure() {
+        let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+            Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
+            controller.dismiss(animated: true)
+            }
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+    }
     func pullToRefreshApiCall() {
         if NetworkConnectionHandler().checkReachable() {
-            viewModel = DashboardViewModel()
-            viewModel?.GetNewsForDashboardApiCall(data: APIConstants.dashboardApiUrl,completion: { [weak self] in
-                self?.responseNews = self?.viewModel?.aPIResponseModel
-                self?.seperateDataReloadTable()
-            })
+            apiCall()
         } else {
-            let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
-                controller.dismiss(animated: true)
-                }
-            controller.addAction(okAction)
-            present(controller, animated: true, completion: nil)
+            internetFailure()
         }
     }
     func getNewsApiCall() {
         if NetworkConnectionHandler().checkReachable() {
             Utils().startLoading(sender: indicator, wholeView: view)
-            viewModel = DashboardViewModel()
-            viewModel?.GetNewsForDashboardApiCall(data: APIConstants.dashboardApiUrl,completion: { [weak self] in
-                self?.responseNews = self?.viewModel?.aPIResponseModel
-                self?.seperateDataReloadTable()
-            })
+            apiCall()
         } else {
-            let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                Utils().endLoading(sender: self.indicator, wholeView: self.view ?? UIView())
-                controller.dismiss(animated: true)
-                }
-            controller.addAction(okAction)
-            present(controller, animated: true, completion: nil)
+            internetFailure()
         }
     }
     @objc func refresh() {
         pullToRefreshApiCall()
     }
     func seperateDataReloadTable() {
-        let collectionFilter = responseNews?.data.filter{$0.image != nil && $0.image != ""}
+        let collectionFilter = responseNews?.articles?.filter{$0.urlToImage != nil && $0.urlToImage != ""}
         apiDataValues = collectionFilter?.first
         let filter = collectionFilter?.filter{$0.title != apiDataValues?.title}
-        var unique = [APIDataStruct]()
-        for arrValue in filter ?? [APIDataStruct]() {
+        var unique = [ArticalSet]()
+        for arrValue in filter ?? [ArticalSet]() {
             if !unique.contains(where: { $0.title == arrValue.title }) {
                 unique.append(arrValue)
             }
@@ -114,7 +109,7 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as? TitleTableViewCell else {return UITableViewCell()}
             if apiDataValues?.title != nil {
                 cell.liveNewsLabel.font = UIFont.boldSystemFont(ofSize: 17)
-                cell.liveNewsLabel.text = "LiveNews"
+                cell.liveNewsLabel.text = "Live News Around You"
             }
             return cell
         default:

@@ -55,7 +55,7 @@ extension SearchTabViewController {
         lineView.layer.cornerRadius = 2
         searchTextField.font = UIFont.systemFont(ofSize: 15)
         highLightedView.layer.cornerRadius = 2
-        searchTextField.backgroundColor = UIColor(hex: "#f5f5f5")
+        searchTextField.backgroundColor = UIColor().hexStringToUIColor(hex: "f5f5f5")
         categoryCollectionView.delegate = self
     }
     
@@ -66,6 +66,8 @@ extension SearchTabViewController {
             let labelSize = (item as NSString).size(withAttributes: [.font: label.font!])
             label.frame = CGRect(x: labelStartingPoint, y: 0, width: labelSize.width, height: 45)
             label.text = item
+            label.tag = Int(labelStartingPoint) + Int(labelSize.width)
+            print("label.tag:\(label.tag)")
             if item == "General" {
                 highLightedViewWidth.constant = labelSize.width
                 selectedLabel = label
@@ -97,6 +99,9 @@ extension SearchTabViewController {
                 highLightedViewWidth.constant = tappedLabel.frame.width
                 highLightedViewLeadingAnchor.constant = tappedLabel.frame.origin.x
                 selectedLabel = tappedLabel
+                if tappedLabel.tag > (Int(self.view.frame.width) - 20) {
+                    categoryCollectionView.setContentOffset(CGPoint(x: (self.view.frame.width - (tappedLabel.frame.width + 25)), y: 0), animated: true)
+                }
             }
         }
     }

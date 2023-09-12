@@ -9,7 +9,7 @@ import Foundation
 
 class DashboardViewModel {
     
-    var aPIResponseModel: PaginationStruct?
+    var aPIResponseModel: HeadLinesResponse?
     
     func GetNewsForDashboardApiCall(data: String , completion: @escaping () -> ()) {
         let _: Void =  URLSession.shared.dataTask(with: NSURL(string: data)! as URL) { data, response, error in
@@ -20,7 +20,7 @@ class DashboardViewModel {
             if response.statusCode == 200 {
                 if let data = data {
                     do {
-                        let responseData = try JSONDecoder().decode(PaginationStruct.self, from: data)
+                        let responseData = try JSONDecoder().decode(HeadLinesResponse.self, from: data)
                         self.aPIResponseModel = responseData
                         completion()
                     } catch {

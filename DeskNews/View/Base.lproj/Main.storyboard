@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -52,13 +53,13 @@
                                         <rect key="frame" x="0.0" y="55" width="393" height="653.66666666666663"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desk News App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK6-s3-bvq">
-                                        <rect key="frame" x="0.0" y="5" width="393" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D E S K   N E W S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK6-s3-bvq">
+                                        <rect key="frame" x="0.0" y="15" width="393" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="TdZ-Yo-YdS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" name="AccentColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -66,13 +67,13 @@
                                 <constraints>
                                     <constraint firstItem="wK6-s3-bvq" firstAttribute="leading" secondItem="HDt-Oy-Ezf" secondAttribute="leading" id="A5P-8m-67i"/>
                                     <constraint firstAttribute="trailing" secondItem="wK6-s3-bvq" secondAttribute="trailing" id="CNJ-Sz-5yf"/>
-                                    <constraint firstItem="6Rl-fw-aEF" firstAttribute="top" secondItem="wK6-s3-bvq" secondAttribute="bottom" constant="20" id="R1T-1X-2sj"/>
+                                    <constraint firstItem="6Rl-fw-aEF" firstAttribute="top" secondItem="wK6-s3-bvq" secondAttribute="bottom" constant="10" id="R1T-1X-2sj"/>
                                     <constraint firstItem="m6X-Rg-uM7" firstAttribute="leading" secondItem="HDt-Oy-Ezf" secondAttribute="leading" id="SPA-dd-cMr"/>
                                     <constraint firstAttribute="trailing" secondItem="6Rl-fw-aEF" secondAttribute="trailing" id="WhT-NQ-mBT"/>
                                     <constraint firstAttribute="trailing" secondItem="m6X-Rg-uM7" secondAttribute="trailing" id="irY-Aw-qWb"/>
                                     <constraint firstItem="m6X-Rg-uM7" firstAttribute="top" secondItem="6Rl-fw-aEF" secondAttribute="bottom" id="kGz-J3-c0t"/>
                                     <constraint firstItem="6Rl-fw-aEF" firstAttribute="leading" secondItem="HDt-Oy-Ezf" secondAttribute="leading" id="qKV-ts-Yf9"/>
-                                    <constraint firstItem="wK6-s3-bvq" firstAttribute="top" secondItem="HDt-Oy-Ezf" secondAttribute="top" constant="5" id="qPR-xr-f4W"/>
+                                    <constraint firstItem="wK6-s3-bvq" firstAttribute="top" secondItem="HDt-Oy-Ezf" secondAttribute="top" constant="15" id="qPR-xr-f4W"/>
                                     <constraint firstAttribute="bottom" secondItem="m6X-Rg-uM7" secondAttribute="bottom" id="wgW-Tt-24G"/>
                                 </constraints>
                             </view>
@@ -427,6 +428,9 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
