@@ -10,28 +10,6 @@ import UIKit
 import SystemConfiguration
 
 class Utils {
-    
-    func getRegularFont(type: String, size: CGFloat) -> UIFont {
-        return UIFont(name: type, size: size) ?? UIFont()
-    }
-    
-    func downloadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
-        let newUrl = URL(string: url)!
-        URLSession.shared.dataTask(with: newUrl) { data, response, error in
-            if let error = error {
-                print("Error downloading image: \(error)")
-                completion(nil)
-                return
-            }
-            guard let data = data, let image = UIImage(data: data) else {
-                print("Invalid image data")
-                completion(nil)
-                return
-            }
-            completion(image)
-        }.resume()
-    }
-    
     func addRefreshController(sender: UITableView) -> UIRefreshControl {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Fetch Latest News")

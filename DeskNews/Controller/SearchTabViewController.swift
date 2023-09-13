@@ -95,7 +95,12 @@ extension SearchTabViewController {
                 // Deselect the previously selected label (if any)
                 selectedLabel?.textColor = .gray
                 // Select the tapped label
-                tappedLabel.textColor = .black
+                if self.traitCollection.userInterfaceStyle == .dark {
+                    tappedLabel.textColor = .white
+                } else {
+                    tappedLabel.textColor = .black
+                }
+                tappedLabel.textColor = highLightedView.backgroundColor
                 highLightedViewWidth.constant = tappedLabel.frame.width
                 highLightedViewLeadingAnchor.constant = tappedLabel.frame.origin.x
                 selectedLabel = tappedLabel

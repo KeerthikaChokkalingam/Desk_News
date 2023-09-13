@@ -13,7 +13,7 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var newsAuthorNameLabel: UILabel!
     @IBOutlet weak var newsPublishedTimeLabel: UILabel!
     @IBOutlet weak var newsTitleLabel: UILabel!
-    @IBOutlet weak var newsImageView: UIImageView!
+    @IBOutlet weak var newsImageView: CustomImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,11 +29,7 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
         if urlString != nil && Utils().isValidURL((urlString!)) {
             previewButton.isHidden = true
             newsImageView.isHidden = false
-            Utils().downloadImage(from: ((apiResponse.urlToImage!))) { [weak self] image in
-                DispatchQueue.main.async {
-                    self?.newsImageView.image = image
-                }
-            }
+            newsImageView.loadImage(urlString: apiResponse.urlToImage ?? "")
         } else {
             newsImageView.isHidden = true
             previewButton.isHidden = false

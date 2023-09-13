@@ -23,7 +23,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-di-rz4">
                         <rect key="frame" x="0.0" y="0.0" width="302" height="240"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-NA-I9q">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-NA-I9q" customClass="CustomImageView" customModule="DeskNews" customModuleProvider="target">
                                 <rect key="frame" x="2" y="2" width="298" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="DLk-63-8jX"/>
@@ -114,7 +114,7 @@
             <size key="customSize" width="302" height="255"/>
             <connections>
                 <outlet property="newsAuthorNameLabel" destination="nIJ-H0-Cja" id="5TA-PP-aHY"/>
-                <outlet property="newsImageView" destination="fMR-NA-I9q" id="UV4-p3-zVW"/>
+                <outlet property="newsImageView" destination="fMR-NA-I9q" id="7os-Mm-us8"/>
                 <outlet property="newsPublishedTimeLabel" destination="fFj-nX-azi" id="aAO-gC-VwZ"/>
                 <outlet property="newsTitleLabel" destination="Y6C-t0-h9Z" id="UIZ-bd-IqG"/>
                 <outlet property="previewButton" destination="LUO-Sh-Dhc" id="OPt-pd-qe1"/>
@@ -125,7 +125,7 @@
     <resources>
         <image name="photo" catalog="system" width="128" height="93"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.23100000619888306" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
