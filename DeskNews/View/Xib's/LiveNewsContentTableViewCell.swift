@@ -57,7 +57,7 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
         if UIDevice.current.userInterfaceIdiom == .pad {
             return CGSize(width: 420, height: 380)
         } else {
-            return CGSize(width: 230, height: 260)
+            return CGSize(width: 230, height: 255)
         }
     }
 }

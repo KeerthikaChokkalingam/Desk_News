@@ -29,7 +29,7 @@
                                 <rect key="frame" x="18" y="149.66666666666666" width="279" height="50.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwE-LR-Pj8">
-                                        <rect key="frame" x="0.0" y="0.0" width="279" height="50.333333333333336"/>
+                                        <rect key="frame" x="3" y="0.0" width="273" height="50.333333333333336"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" name="AccentColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,9 +38,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="IwE-LR-Pj8" firstAttribute="top" secondItem="BSC-ZX-U4t" secondAttribute="top" id="Kxu-C0-1Z5"/>
-                                    <constraint firstAttribute="trailing" secondItem="IwE-LR-Pj8" secondAttribute="trailing" id="QNg-IA-jea"/>
+                                    <constraint firstAttribute="trailing" secondItem="IwE-LR-Pj8" secondAttribute="trailing" constant="3" id="QNg-IA-jea"/>
                                     <constraint firstAttribute="bottom" secondItem="IwE-LR-Pj8" secondAttribute="bottom" id="dIs-9U-GJi"/>
-                                    <constraint firstItem="IwE-LR-Pj8" firstAttribute="leading" secondItem="BSC-ZX-U4t" secondAttribute="leading" id="j8Z-aw-QRc"/>
+                                    <constraint firstItem="IwE-LR-Pj8" firstAttribute="leading" secondItem="BSC-ZX-U4t" secondAttribute="leading" constant="3" id="j8Z-aw-QRc"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPP-Yk-X3R">
@@ -53,7 +53,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.78431372549019607" green="1" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="NZr-6h-jtR"/>
                                     <constraint firstItem="D6P-bf-W3j" firstAttribute="top" secondItem="DPP-Yk-X3R" secondAttribute="top" id="R0S-uN-JVZ"/>

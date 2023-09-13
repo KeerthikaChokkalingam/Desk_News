@@ -139,7 +139,7 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
             if UIDevice.current.userInterfaceIdiom == .pad {
                 return 380
             } else {
-                return 260
+                return 255
             }
         }
     }
