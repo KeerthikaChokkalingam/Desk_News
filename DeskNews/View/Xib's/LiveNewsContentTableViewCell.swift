@@ -57,7 +57,14 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
         if UIDevice.current.userInterfaceIdiom == .pad {
             return CGSize(width: 420, height: 380)
         } else {
-            return CGSize(width: 230, height: 255)
+            return CGSize(width: 230, height: 240)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectedNewsViewController") as? SelectedNewsViewController else {return}
+        self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
+    }
 }
+
+

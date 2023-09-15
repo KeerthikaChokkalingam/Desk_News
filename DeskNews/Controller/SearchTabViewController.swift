@@ -55,7 +55,6 @@ extension SearchTabViewController {
         lineView.layer.cornerRadius = 2
         searchTextField.font = UIFont.systemFont(ofSize: 15)
         highLightedView.layer.cornerRadius = 2
-        searchTextField.backgroundColor = UIColor().hexStringToUIColor(hex: "f5f5f5")
         categoryCollectionView.delegate = self
     }
     

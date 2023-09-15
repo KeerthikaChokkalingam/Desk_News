@@ -17,6 +17,7 @@ extension UIView {
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
         blurEffectView.alpha = 0.7
+        blurEffectView.isUserInteractionEnabled = false
         self.insertSubview(blurEffectView, at: 0)
     }
     func applyCornerRadiusSpecify(topL: Int, topR: Int, bottomL: Int, bottomR: Int, radius: CGFloat?=nil) {

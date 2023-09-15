@@ -16,6 +16,7 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var newsDayView: UIView!
     @IBOutlet weak var contentImageView: CustomImageView!
     @IBOutlet weak var backGroundView: UIView!
+    
     override func awakeFromNib() {
         newsDayView.isHidden = true
         learnMoreButton.isHidden = true
@@ -25,6 +26,7 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     func setUpUI() {
         newsDayView.isHidden = false
         learnMoreButton.isHidden = false

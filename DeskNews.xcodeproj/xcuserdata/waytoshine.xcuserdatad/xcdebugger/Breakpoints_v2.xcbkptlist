@@ -315,8 +315,8 @@
             filePath = "DeskNews/Controller/SearchTabViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "setUpDynamicLabel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -331,8 +331,8 @@
             filePath = "DeskNews/Controller/SearchTabViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "labelTapped(_:)"
             landmarkType = "7">
             <Locations>
@@ -381,6 +381,36 @@
                   endingLineNumber = "103"
                   offsetFromSymbolStart = "1984">
                </Location>
+               <Location
+                  uuid = "A9BB50A2-3C45-407C-875D-4CFECFD1B455 - e373107cc44c7770"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeskNews.SearchTabViewController.labelTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "DeskNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waytoshine/Desktop/Desk_News/DeskNews/Controller/SearchTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "2448">
+               </Location>
+               <Location
+                  uuid = "A9BB50A2-3C45-407C-875D-4CFECFD1B455 - e373107cc44c7713"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeskNews.SearchTabViewController.labelTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "DeskNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waytoshine/Desktop/Desk_News/DeskNews/Controller/SearchTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "2448">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -394,8 +424,8 @@
             filePath = "DeskNews/Controller/SearchTabViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "labelTapped(_:)"
             landmarkType = "7">
             <Locations>
@@ -428,6 +458,36 @@
                   startingLineNumber = "102"
                   endingLineNumber = "102"
                   offsetFromSymbolStart = "1548">
+               </Location>
+               <Location
+                  uuid = "0F707585-321E-4AE2-AB10-1E003246A04B - e373107cc44c7713"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeskNews.SearchTabViewController.labelTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "DeskNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waytoshine/Desktop/Desk_News/DeskNews/Controller/SearchTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "2012">
+               </Location>
+               <Location
+                  uuid = "0F707585-321E-4AE2-AB10-1E003246A04B - e373107cc44c7732"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeskNews.SearchTabViewController.labelTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "DeskNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waytoshine/Desktop/Desk_News/DeskNews/Controller/SearchTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "2012">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -589,6 +649,54 @@
             startingLineNumber = "14"
             endingLineNumber = "14"
             landmarkName = "GetNewsForDashboardApiCall(data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D487A663-3BDB-484D-B77D-DA7BA1FC8166"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeskNews/Controller/HomeDashboardViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "goToNewsWebTab(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1344D73E-30F0-47E7-ADE1-60E54FE2CB23"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeskNews/Controller/HomeDashboardViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "goToNewsWebTab(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5A97FF3-453A-4F09-BC61-EB204F8FF70D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeskNews/View/Xib&apos;s/LiveNewsContentTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

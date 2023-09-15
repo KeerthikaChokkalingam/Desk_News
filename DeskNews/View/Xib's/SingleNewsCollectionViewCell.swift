@@ -9,6 +9,7 @@ import UIKit
 
 class SingleNewsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var mainContentView: UIView!
     @IBOutlet weak var previewButton: UIButton!
     @IBOutlet weak var newsAuthorNameLabel: UILabel!
     @IBOutlet weak var newsPublishedTimeLabel: UILabel!
@@ -18,6 +19,7 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         previewButton.isHidden = true
+        mainContentView.layer.cornerRadius = 15
     }
     func loadValues(apiResponse: ArticalSet) {
         newsImageView.clipsToBounds = true

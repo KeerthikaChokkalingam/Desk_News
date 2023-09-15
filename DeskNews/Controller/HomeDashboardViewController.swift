@@ -91,6 +91,11 @@ extension HomeDashboardViewController {
             self.liveNewsList.reloadData()
         }
     }
+    @objc func goToNewsWebTab(_ sender: UIButton) {
+        guard let webVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsWebViewController") as? NewsWebViewController else {return}
+        webVc.pageUrl = sender.accessibilityIdentifier ?? ""
+        self.navigationController?.pushViewController(webVc, animated: true)
+    }
 }
 extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,8 +106,10 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
         switch indexPath.row {
         case 0 :
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsOfTheDayFeedTableViewCell", for: indexPath) as? NewsOfTheDayFeedTableViewCell else {return UITableViewCell()}
+            cell.learnMoreButton.addTarget(self, action: #selector(goToNewsWebTab(_:)) , for: .touchUpInside)
             if apiDataValues?.title != nil {
                 cell.updateCell(apiResponse: apiDataValues!)
+                cell.learnMoreButton.accessibilityIdentifier = apiDataValues?.url
             }
             return cell
         case 1:
@@ -139,7 +146,7 @@ extension HomeDashboardViewController: UITableViewDelegate, UITableViewDataSourc
             if UIDevice.current.userInterfaceIdiom == .pad {
                 return 380
             } else {
-                return 255
+                return 240
             }
         }
     }
