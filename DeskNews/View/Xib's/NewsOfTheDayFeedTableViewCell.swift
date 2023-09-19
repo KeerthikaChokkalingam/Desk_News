@@ -20,6 +20,7 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         newsDayView.isHidden = true
         learnMoreButton.isHidden = true
+        selectionStyle = .none
         super.awakeFromNib()
     }
 

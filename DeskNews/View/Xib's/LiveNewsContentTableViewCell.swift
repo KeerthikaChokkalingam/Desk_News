@@ -63,7 +63,8 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectedNewsViewController") as? SelectedNewsViewController else {return}
-        self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
+        vc.selectedNewsData = collectionValues[indexPath.row]
+        parentViewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

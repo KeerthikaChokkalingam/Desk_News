@@ -9,6 +9,7 @@ import UIKit
 
 class SearchTabViewController: UIViewController {
     
+    @IBOutlet weak var searchListTableView: UITableView!
     @IBOutlet weak var categoryCollectionView: UIScrollView!
     @IBOutlet weak var lineViewTrailingAnchor: NSLayoutConstraint!
     @IBOutlet weak var highLightedView: UIView!
@@ -21,11 +22,20 @@ class SearchTabViewController: UIViewController {
     var topCategories = AppConstant.categories
     var labelStartingPoint: CGFloat = 0
     var selectedLabel: UILabel?
+    var viewModel: DashboardViewModel?
+    var responseNews: HeadLinesResponse?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSearchTextField()
         setUpDynamicLabel()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if NetworkConnectionHandler().checkReachable() {
+            apiCall()
+        } else {
+            internetFailure()
+        }
     }
     
 }
@@ -33,6 +43,9 @@ class SearchTabViewController: UIViewController {
 extension SearchTabViewController {
     
     func setUpSearchTextField() {
+        searchListTableView.delegate = self
+        searchListTableView.dataSource = self
+        searchListTableView.register(UINib(nibName: "NewsFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsFeedTableViewCell")
         searchTextField.delegate = self
         searchTextField.layer.cornerRadius = 20
         searchTextField.placeholder = "Search"
@@ -65,6 +78,7 @@ extension SearchTabViewController {
             let labelSize = (item as NSString).size(withAttributes: [.font: label.font!])
             label.frame = CGRect(x: labelStartingPoint, y: 0, width: labelSize.width, height: 45)
             label.text = item
+            label.font = UIFont(name: "Helvetica Nueue", size: 15)
             label.tag = Int(labelStartingPoint) + Int(labelSize.width)
             print("label.tag:\(label.tag)")
             if item == "General" {
@@ -109,6 +123,26 @@ extension SearchTabViewController {
             }
         }
     }
+    
+    func apiCall(){
+        viewModel = DashboardViewModel()
+        viewModel?.GetNewsForDashboardApiCall(data: APIConstants.sourceUrl,completion: { [weak self] in
+            self?.responseNews = self?.viewModel?.aPIResponseModel
+            DispatchQueue.main.async {
+                self?.searchListTableView.reloadData()
+            }
+        })
+    }
+    func internetFailure() {
+        let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+            Utils().endRefreshController(sender: self.searchListTableView ?? UITableView())
+            controller.dismiss(animated: true)
+            }
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+    }
 }
 
 extension SearchTabViewController: UITextFieldDelegate {
@@ -137,4 +171,24 @@ extension SearchTabViewController: UIScrollViewDelegate {
             lineViewTrailingAnchor.constant = 0
         }
     }
+}
+
+extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return responseNews?.articles?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsFeedTableViewCell", for: indexPath) as? NewsFeedTableViewCell else {return UITableViewCell()}
+        if (responseNews?.articles?.count ?? 0) > 0 {
+            let currentData = responseNews?.articles?[indexPath.row] ?? ArticalSet()
+            cell.applyServerResult(values: currentData)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
 }

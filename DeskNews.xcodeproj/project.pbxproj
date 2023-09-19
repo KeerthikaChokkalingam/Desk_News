@@ -38,6 +38,7 @@
 		3787E93E2A96065E00592C93 /* NewsOfTheDayFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3787E93C2A96065E00592C93 /* NewsOfTheDayFeedTableViewCell.xib */; };
 		379BBFF32A9779560066788F /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379BBFF22A9779560066788F /* ExtensionConstants.swift */; };
 		37B6A6552A94C025007314F7 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6A6542A94C025007314F7 /* AppConstant.swift */; };
+		37F2F41E2AB5A56000CAE6CE /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F2F41D2AB5A56000CAE6CE /* HomeTabBarController.swift */; };
 		37F76A662AB1F97400765604 /* SelectedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F76A652AB1F97400765604 /* SelectedNewsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		3787E93C2A96065E00592C93 /* NewsOfTheDayFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsOfTheDayFeedTableViewCell.xib; sourceTree = "<group>"; };
 		379BBFF22A9779560066788F /* ExtensionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionConstants.swift; sourceTree = "<group>"; };
 		37B6A6542A94C025007314F7 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		37F2F41D2AB5A56000CAE6CE /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		37F76A652AB1F97400765604 /* SelectedNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 			children = (
 				376EE1F12A94B4A9000611A9 /* SceneDelegate.swift */,
 				376EE1EF2A94B4A9000611A9 /* AppDelegate.swift */,
+				37F2F41D2AB5A56000CAE6CE /* HomeTabBarController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			files = (
 				3715DA892A988697008AFD0F /* APIHandler.swift in Sources */,
 				3730936C2AB185E00047C573 /* CustomImageView.swift in Sources */,
+				37F2F41E2AB5A56000CAE6CE /* HomeTabBarController.swift in Sources */,
 				3787E9352A95F98500592C93 /* DashboardModel.swift in Sources */,
 				3769E6642A9F36640066E4E1 /* HomeDashboardViewController.swift in Sources */,
 				379BBFF32A9779560066788F /* ExtensionConstants.swift in Sources */,

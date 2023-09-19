@@ -9,15 +9,45 @@ import UIKit
 
 class NewsFeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var newsImageView: CustomImageView!
+    @IBOutlet weak var chanelNameLabel: UILabel!
+    @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bgView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        bgView.layer.cornerRadius = 15
+        newsImageView.layer.cornerRadius = 15
+        selectionStyle = .none
+        bgView.layer.cornerRadius = 8.0 // Optional: Add corner radius for rounded corners
+        bgView.layer.masksToBounds = false
+        bgView.layer.shadowColor = UIColor().hexStringToUIColor(hex: "#F9FAFB").cgColor
+        bgView.layer.shadowOpacity = 0.3
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        bgView.layer.shadowRadius = 4.0
+        bgView.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8.0).cgPath
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    func applyServerResult(values: ArticalSet) {
+        chanelNameLabel.text = values.source?.name
+        authorLabel.text = values.author
+        titleLabel.text = values.title
+        newsImageView.loadImage(urlString: values.urlToImage ?? "")
+        let dateString = Utils().dateFromISO8601String(values.publishedAt ?? "")
+        let startDate = dateString ?? Date()
+        let endDate = Date.now
+        let timeInterval = endDate.timeIntervalSince(startDate)
+        let someDate = Date(timeIntervalSinceNow: TimeInterval(-(timeInterval)))
+        let timeAgoString = Utils().timeAgoSinceDate(someDate)
+        if timeAgoString != "Just now" {
+            dateTimeLabel.text = timeAgoString + " ago"
+        } else {
+            dateTimeLabel.text = timeAgoString
+        }
     }
     
 }
