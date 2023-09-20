@@ -76,4 +76,11 @@ class Utils {
         }
         return false
     }
+    func lazyLoaderShow(sender: UITableView) {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: 70, height: CGFloat(70))
+        sender.tableFooterView = spinner
+        sender.tableFooterView?.isHidden = false
+    }
 }

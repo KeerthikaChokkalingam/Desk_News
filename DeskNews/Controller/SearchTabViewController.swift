@@ -24,7 +24,10 @@ class SearchTabViewController: UIViewController {
     var selectedLabel: UILabel?
     var viewModel: DashboardViewModel?
     var responseNews: HeadLinesResponse?
-
+    var wholeResponse = [ArticalSet]() // original news value
+    var searchNewsResponse = [ArticalSet]() // filter value based on search
+    var newText = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSearchTextField()
@@ -32,7 +35,7 @@ class SearchTabViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         if NetworkConnectionHandler().checkReachable() {
-            apiCall()
+            apiCall(pageValue: "1")
         } else {
             internetFailure()
         }
@@ -124,10 +127,12 @@ extension SearchTabViewController {
         }
     }
     
-    func apiCall(){
+    func apiCall(pageValue: String){
         viewModel = DashboardViewModel()
-        viewModel?.GetNewsForDashboardApiCall(data: APIConstants.sourceUrl,completion: { [weak self] in
-            self?.responseNews = self?.viewModel?.aPIResponseModel
+        viewModel?.GetNewsForDashboardApiCall(data: "https://newsapi.org/v2/top-headlines?country=in&page=" + pageValue + "&category=general&apiKey=" + APIConstants.accessKey ,completion: { [weak self] in
+            self?.responseNews =  (self?.viewModel?.aPIResponseModel)
+            self?.wholeResponse = (self?.wholeResponse ?? [ArticalSet]()) + (self?.responseNews?.articles ?? [ArticalSet]())
+            self?.searchNewsResponse = self?.wholeResponse ?? [ArticalSet]()
             DispatchQueue.main.async {
                 self?.searchListTableView.reloadData()
             }
@@ -136,10 +141,10 @@ extension SearchTabViewController {
     func internetFailure() {
         let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-                UIAlertAction in
+            UIAlertAction in
             Utils().endRefreshController(sender: self.searchListTableView ?? UITableView())
             controller.dismiss(animated: true)
-            }
+        }
         controller.addAction(okAction)
         present(controller, animated: true, completion: nil)
     }
@@ -149,6 +154,27 @@ extension SearchTabViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        newText = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        return true
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let filter = wholeResponse.filter{item1 in
+            (item1.title!).lowercased().contains(newText.lowercased())
+            ||
+            ((item1.source?.name ?? "").lowercased().contains(newText.lowercased()))
+        }
+        if filter.count > 0 {
+            searchNewsResponse = filter
+        } else {
+            searchNewsResponse.removeAll()
+        }
+        if newText == "" {
+            searchNewsResponse = wholeResponse
+        }
+        searchListTableView.reloadData()
     }
 }
 
@@ -175,13 +201,13 @@ extension SearchTabViewController: UIScrollViewDelegate {
 
 extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return responseNews?.articles?.count ?? 0
+        return searchNewsResponse.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsFeedTableViewCell", for: indexPath) as? NewsFeedTableViewCell else {return UITableViewCell()}
-        if (responseNews?.articles?.count ?? 0) > 0 {
-            let currentData = responseNews?.articles?[indexPath.row] ?? ArticalSet()
+        if (searchNewsResponse.count) > 0 {
+            let currentData = searchNewsResponse[indexPath.row]
             cell.applyServerResult(values: currentData)
         }
         return cell
@@ -191,4 +217,19 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if newText == "" {
+            if indexPath.row == ((wholeResponse.count) - 1) {
+                if (responseNews?.totalResults ?? 0 ) > (wholeResponse.count) {
+                    Utils().lazyLoaderShow(sender: tableView)
+                    let page = (wholeResponse.count / 2)
+                    let pageCount = (page / 10) + 1
+                    apiCall(pageValue: String(pageCount))
+                    print("wholeResponse:\(wholeResponse)")
+                } else {
+                    tableView.tableFooterView = nil
+                }
+            }
+        }
+    }
 }
