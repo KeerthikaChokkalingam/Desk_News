@@ -61,7 +61,7 @@ struct APIDataStruct: Codable {
     var language: String?
     var country: String?
     var publishedAt: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case author, title, description, url, source, image, category, language, country
         case publishedAt = "published_at"

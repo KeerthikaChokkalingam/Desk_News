@@ -8,7 +8,7 @@
 import UIKit
 
 class SelectedNewsViewController: UIViewController {
-
+    
     @IBOutlet weak var chanelName: UILabel!
     @IBOutlet weak var newFeedImageView: CustomImageView!
     @IBOutlet weak var newDescriptionLabel: UILabel!
@@ -21,7 +21,7 @@ class SelectedNewsViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-
+    
     @IBAction func backToNewsTab(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

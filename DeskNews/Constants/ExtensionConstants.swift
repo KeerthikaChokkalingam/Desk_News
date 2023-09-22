@@ -76,3 +76,38 @@ extension UIColor {
         return white > 0.5
     }
 }
+extension UIViewController {
+    func internetFailure(childTableView: UITableView) {
+        let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            Utils().endRefreshController(sender: childTableView)
+            controller.dismiss(animated: true)
+        }
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+    }
+    func errorAlert(message: String) {
+        let alert = UIAlertController(title: AppConstant.appName, message: message, preferredStyle: .alert)
+        
+        // Create the custom view and add it to the alert controller's view
+        let customView = AlertWithIconView()
+        customView.messageLabel.text = "It's out rush , Try again !!!"
+        
+        alert.view.addSubview(customView)
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            customView.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor),
+            customView.trailingAnchor.constraint(equalTo: alert.view.trailingAnchor),
+            customView.topAnchor.constraint(equalTo: alert.view.topAnchor),
+            customView.bottomAnchor.constraint(equalTo: alert.view.bottomAnchor)
+        ])
+        
+        // Add actions as needed
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // Present the alert
+        present(alert, animated: true, completion: nil)
+    }
+}

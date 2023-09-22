@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 class NewsWebViewController: UIViewController {
-
+    
     @IBOutlet weak var newsWebView: WKWebView!
     
     var pageUrl: String = ""
