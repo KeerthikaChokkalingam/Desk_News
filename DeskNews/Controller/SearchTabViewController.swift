@@ -27,14 +27,18 @@ class SearchTabViewController: UIViewController {
     var wholeResponse = [ArticalSet]() // original news value
     var searchNewsResponse = [ArticalSet]() // filter value based on search
     var newText = String()
+    var selectedCategory = "General"
+    var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         setUpSearchTextField()
         setUpDynamicLabel()
     }
     override func viewWillAppear(_ animated: Bool) {
         if NetworkConnectionHandler().checkReachable() {
+            Utils().startLoading(sender: indicator, wholeView: view)
             apiCall(pageValue: "1")
         } else {
             internetFailure()
@@ -45,10 +49,17 @@ class SearchTabViewController: UIViewController {
 
 extension SearchTabViewController {
     
-    func setUpSearchTextField() {
-        searchListTableView.delegate = self
-        searchListTableView.dataSource = self
+    func setupUI() {
         searchListTableView.register(UINib(nibName: "NewsFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsFeedTableViewCell")
+        let refresher = Utils().addRefreshController(sender: searchListTableView)
+        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        indicator = Utils().setUpLoader(sender: view)
+        lineView.layer.cornerRadius = 2
+        highLightedView.layer.cornerRadius = 2
+        categoryCollectionView.delegate = self
+    }
+    
+    func setUpSearchTextField() {
         searchTextField.delegate = self
         searchTextField.layer.cornerRadius = 20
         searchTextField.placeholder = "Search"
@@ -67,11 +78,7 @@ extension SearchTabViewController {
         filterImageView.tintColor = UIColor.separator
         filterView.addSubview(filterImageView)
         searchTextField.rightView = filterView
-        
-        lineView.layer.cornerRadius = 2
         searchTextField.font = UIFont.systemFont(ofSize: 15)
-        highLightedView.layer.cornerRadius = 2
-        categoryCollectionView.delegate = self
     }
     
     func setUpDynamicLabel() {
@@ -82,8 +89,6 @@ extension SearchTabViewController {
             label.frame = CGRect(x: labelStartingPoint, y: 0, width: labelSize.width, height: 45)
             label.text = item
             label.font = UIFont(name: "Helvetica Nueue", size: 15)
-            label.tag = Int(labelStartingPoint) + Int(labelSize.width)
-            print("label.tag:\(label.tag)")
             if item == "General" {
                 highLightedViewWidth.constant = labelSize.width
                 selectedLabel = label
@@ -98,6 +103,7 @@ extension SearchTabViewController {
             label.addGestureRecognizer(tapGesture)
             scrollContentView.addSubview(label)
             labelStartingPoint += labelSize.width + 23
+            label.tag = Int(labelStartingPoint)
         }
     }
     
@@ -111,6 +117,10 @@ extension SearchTabViewController {
                 // Deselect the previously selected label (if any)
                 selectedLabel?.textColor = .gray
                 // Select the tapped label
+                selectedCategory = tappedLabel.text ?? ""
+                Utils().startLoading(sender: indicator, wholeView: view)
+                wholeResponse.removeAll()
+                apiCall(pageValue: "1")
                 if self.traitCollection.userInterfaceStyle == .dark {
                     tappedLabel.textColor = .white
                 } else {
@@ -120,8 +130,12 @@ extension SearchTabViewController {
                 highLightedViewWidth.constant = tappedLabel.frame.width
                 highLightedViewLeadingAnchor.constant = tappedLabel.frame.origin.x
                 selectedLabel = tappedLabel
-                if tappedLabel.tag > (Int(self.view.frame.width) - 20) {
-                    categoryCollectionView.setContentOffset(CGPoint(x: (self.view.frame.width - (tappedLabel.frame.width + 25)), y: 0), animated: true)
+                if tappedLabel.tag > (Int(self.view.frame.maxX)) {
+                    categoryCollectionView.scrollRectToVisible(CGRect(x: (self.view.frame.width - (tappedLabel.frame.width - 43)), y: 0, width: 300, height: 30), animated: true)
+                } else if tappedLabel.tag > (Int(self.view.frame.midX)){
+                    categoryCollectionView.scrollRectToVisible(CGRect(x: 40, y: 0, width: 300, height: 30), animated: true)
+                } else {
+                    categoryCollectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 300, height: 30), animated: true)
                 }
             }
         }
@@ -129,15 +143,18 @@ extension SearchTabViewController {
     
     func apiCall(pageValue: String){
         viewModel = DashboardViewModel()
-        viewModel?.GetNewsForDashboardApiCall(data: "https://newsapi.org/v2/top-headlines?country=in&page=" + pageValue + "&category=general&apiKey=" + APIConstants.accessKey ,completion: { [weak self] in
+        viewModel?.GetNewsForDashboardApiCall(data: "https://newsapi.org/v2/top-headlines?country=in&page=" + pageValue + "&category=" + selectedCategory.lowercased() + "&apiKey=" + APIConstants.accessKey ,completion: { [weak self] in
             self?.responseNews =  (self?.viewModel?.aPIResponseModel)
             self?.wholeResponse = (self?.wholeResponse ?? [ArticalSet]()) + (self?.responseNews?.articles ?? [ArticalSet]())
             self?.searchNewsResponse = self?.wholeResponse ?? [ArticalSet]()
             DispatchQueue.main.async {
+                Utils().endRefreshController(sender: self?.searchListTableView ?? UITableView())
+                Utils().endLoading(sender: self?.indicator ?? UIActivityIndicatorView(), wholeView: self?.view ?? UIView())
                 self?.searchListTableView.reloadData()
             }
         })
     }
+    
     func internetFailure() {
         let controller = UIAlertController(title: "No Internet Detected", message: "This app requires an Internet connection", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
@@ -148,6 +165,19 @@ extension SearchTabViewController {
         controller.addAction(okAction)
         present(controller, animated: true, completion: nil)
     }
+    
+    @objc func refresh() {
+        pullToRefreshApiCall()
+    }
+    
+    func pullToRefreshApiCall() {
+        if NetworkConnectionHandler().checkReachable() {
+            apiCall(pageValue: "1")
+        } else {
+            internetFailure()
+        }
+    }
+    
 }
 
 extension SearchTabViewController: UITextFieldDelegate {
@@ -200,6 +230,7 @@ extension SearchTabViewController: UIScrollViewDelegate {
 }
 
 extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchNewsResponse.count
     }
@@ -231,5 +262,11 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectedNewsViewController") as? SelectedNewsViewController else {return}
+        vc.selectedNewsData = searchNewsResponse[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

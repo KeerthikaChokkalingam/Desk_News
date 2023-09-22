@@ -29,21 +29,6 @@ class DashboardViewModel {
                 } else {
                     print("Data is nil.")
                 }
-//                if let data = data {
-//                    do {
-//                        let responseData = try JSONDecoder().decode(PaginationStruct.self, from: data)
-//                            print(responseData.pagination.limit) // Accessing data from the decoded struct
-//                            print(responseData.data[0].title)
-//
-////                        let gettedNews = try decoder.decode(PaginationStruct.self, from: data)
-////                        self.aPIResponseModel = gettedNews
-////                        completion()
-//                    } catch {
-//                        print("decode error:\(error)")
-//                    }
-//                } else {
-//                    print("data Error: ", response.statusCode)
-//                }
             } else {
                 print("Error Code: ", response.statusCode)
             }
