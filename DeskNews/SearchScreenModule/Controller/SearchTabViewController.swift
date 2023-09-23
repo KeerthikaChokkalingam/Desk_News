@@ -111,6 +111,7 @@ extension SearchTabViewController {
     }
     @objc func refresh() {
         refresher = true
+        apiCall(pageValue: "1")
     }
 }
 

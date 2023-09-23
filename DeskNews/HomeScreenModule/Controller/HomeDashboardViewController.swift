@@ -71,6 +71,7 @@ extension HomeDashboardViewController {
     }
     @objc func refresh() {
         refresher = true
+        getNewsApiCall()
     }
     func seperateDataReloadTable() {
         let collectionFilter = responseNews?.articles?.filter{$0.urlToImage != nil && $0.urlToImage != ""}
@@ -84,9 +85,7 @@ extension HomeDashboardViewController {
         }
         apiDataCollectionValues = unique
         DispatchQueue.main.async {
-            if self.refresher {
-                Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
-            }
+            Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
             Utils().endLoading(sender: self.indicator, wholeView: self.view ?? UIView())
             self.liveNewsList.reloadData()
         }

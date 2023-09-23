@@ -70,11 +70,6 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
-    var isLight: Bool {
-        var white: CGFloat = 0.0
-        getWhite(&white, alpha: nil)
-        return white > 0.5
-    }
 }
 extension UIViewController {
     func internetFailure(childTableView: UITableView) {

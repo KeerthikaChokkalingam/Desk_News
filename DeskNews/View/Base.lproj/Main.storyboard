@@ -24,7 +24,6 @@
                     <connections>
                         <segue destination="m5y-yC-vTL" kind="relationship" relationship="viewControllers" id="j2P-hT-xvZ"/>
                         <segue destination="dfg-2g-KMe" kind="relationship" relationship="viewControllers" id="Pob-w4-19g"/>
-                        <segue destination="2eE-Ez-dxK" kind="relationship" relationship="viewControllers" id="Xn1-rh-cUR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbe-x6-Iz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -96,11 +95,11 @@
             </objects>
             <point key="canvasLocation" x="580.91603053435108" y="148.59154929577466"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Head Line-->
         <scene sceneID="9lz-y5-jpg">
             <objects>
                 <navigationController navigationBarHidden="YES" id="m5y-yC-vTL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="c2U-bR-5es"/>
+                    <tabBarItem key="tabBarItem" title="Head Line" image="house" catalog="system" selectedImage="house.fill" id="c2U-bR-5es"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZMx-7d-MvX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -112,11 +111,11 @@
             </objects>
             <point key="canvasLocation" x="-356" y="149"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Discover News-->
         <scene sceneID="AOp-1l-KN3">
             <objects>
                 <navigationController navigationBarHidden="YES" id="dfg-2g-KMe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="Izc-xb-MHa"/>
+                    <tabBarItem key="tabBarItem" title="Discover News" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="Izc-xb-MHa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vl2-b2-4cH">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -201,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hA-ty-w1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="1308"/>
+            <point key="canvasLocation" x="581" y="1252"/>
         </scene>
         <!--Selected News View Controller-->
         <scene sceneID="Ajj-Oe-RXT">
@@ -351,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uM-75-Hda" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3411.450381679389" y="1307.7464788732395"/>
+            <point key="canvasLocation" x="1624" y="1251"/>
         </scene>
         <!--Search Tab View Controller-->
         <scene sceneID="110-qt-LUd">
@@ -523,43 +522,9 @@
             </objects>
             <point key="canvasLocation" x="2583.969465648855" y="148.59154929577466"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lsj-fZ-Lhs">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="2eE-Ez-dxK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="SpI-aU-n3u"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J2z-TL-myW">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Sh9-ci-cjV" kind="relationship" relationship="rootViewController" id="wP2-Nm-PJl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e5V-gV-M39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3547" y="170"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yTr-vd-2kk">
-            <objects>
-                <viewController id="Sh9-ci-cjV" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pR4-ta-tLE">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="d94-q3-NfF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xb4-8a-zgg"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F7Z-LY-QK1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4564" y="170"/>
-        </scene>
     </scenes>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
-        <image name="bookmark" catalog="system" width="110" height="128"/>
-        <image name="bookmark.fill" catalog="system" width="110" height="128"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
