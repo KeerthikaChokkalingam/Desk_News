@@ -43,7 +43,7 @@ extension SearchTabViewController: UIScrollViewDelegate {
         let threshold: CGFloat = 10.0
         
         if offsetX > contentWidth - scrollViewWidth - threshold {
-            print("reached")
+//            print("reached")
             // The scroll view has reached the right end
             // You can perform your desired action here
             lineViewTrailingAnchor.constant = -25
@@ -79,7 +79,6 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
                     let page = (wholeResponse.count / 2)
                     let pageCount = (page / 10) + 1
                     apiCall(pageValue: String(pageCount))
-                    print("wholeResponse:\(wholeResponse)")
                 } else {
                     tableView.tableFooterView = nil
                 }
@@ -131,8 +130,13 @@ extension SearchTabViewController {
                 selectedLabel?.textColor = .gray
                 // Select the tapped label
                 selectedCategory = tappedLabel.text ?? ""
+                // Make API call based on category
                 Utils().startLoading(sender: indicator, wholeView: view)
+                // Remove data from already selected category
                 wholeResponse.removeAll()
+                searchNewsResponse.removeAll()
+                // Reload table view
+                searchListTableView.reloadData()
                 apiCall(pageValue: "1")
                 if self.traitCollection.userInterfaceStyle == .dark {
                     tappedLabel.textColor = .white
@@ -143,6 +147,7 @@ extension SearchTabViewController {
                 highLightedViewWidth.constant = tappedLabel.frame.width
                 highLightedViewLeadingAnchor.constant = tappedLabel.frame.origin.x
                 selectedLabel = tappedLabel
+                // scroll view scrollRectToVisible point change based on Selected label
                 if tappedLabel.tag > (Int(self.view.frame.maxX)) {
                     categoryCollectionView.scrollRectToVisible(CGRect(x: (self.view.frame.width - (tappedLabel.frame.width - 43)), y: 0, width: 300, height: 30), animated: true)
                 } else if tappedLabel.tag > (Int(self.view.frame.midX)){

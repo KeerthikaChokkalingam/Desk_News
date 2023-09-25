@@ -29,7 +29,7 @@ class CustomImageView: UIImageView {
         
         task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self, let data = data, let newImage = UIImage(data: data) else {
-                print("Cannot load image from url: \(url)")
+//                print("Cannot load image from url: \(url)")
                 return
             }
             
