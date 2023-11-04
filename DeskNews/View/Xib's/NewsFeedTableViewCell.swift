@@ -9,6 +9,7 @@ import UIKit
 
 class NewsFeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var noPreViewButton: UIButton!
     @IBOutlet weak var newsImageView: CustomImageView!
     @IBOutlet weak var chanelNameLabel: UILabel!
     @IBOutlet weak var dateTimeLabel: UILabel!
@@ -17,6 +18,8 @@ class NewsFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var bgView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        noPreViewButton.isHidden = true
+        noPreViewButton.layer.cornerRadius = 15
         bgView.layer.cornerRadius = 15
         newsImageView.layer.cornerRadius = 15
         selectionStyle = .none
@@ -36,7 +39,14 @@ class NewsFeedTableViewCell: UITableViewCell {
         chanelNameLabel.text = values.source?.name
         authorLabel.text = values.author
         titleLabel.text = values.title
-        newsImageView.loadImage(urlString: values.urlToImage ?? "")
+        if values.urlToImage != nil && values.urlToImage != "" {
+            noPreViewButton.isHidden = true
+            newsImageView.isHidden = false
+            newsImageView.loadImage(urlString: values.urlToImage ?? "")
+        } else {
+            newsImageView.isHidden = true
+            noPreViewButton.isHidden = false
+        }
         let dateString = Utils().dateFromISO8601String(values.publishedAt ?? "")
         let startDate = dateString ?? Date()
         let endDate = Date.now

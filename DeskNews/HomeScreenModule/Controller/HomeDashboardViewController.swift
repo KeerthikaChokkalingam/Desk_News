@@ -74,7 +74,7 @@ extension HomeDashboardViewController {
         getNewsApiCall()
     }
     func seperateDataReloadTable() {
-        let collectionFilter = responseNews?.articles?.filter{$0.urlToImage != nil && $0.urlToImage != ""}
+        let collectionFilter = responseNews?.articles?.filter{$0.title != nil && $0.title != ""}
         apiDataValues = collectionFilter?.first
         let filter = collectionFilter?.filter{$0.title != apiDataValues?.title}
         var unique = [ArticalSet]()

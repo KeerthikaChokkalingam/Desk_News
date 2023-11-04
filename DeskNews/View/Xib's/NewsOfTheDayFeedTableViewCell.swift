@@ -53,7 +53,11 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
         setUpUI()
         newsContentLabel.text = apiResponse.title
         contentImageView.contentMode = .scaleAspectFill
-        contentImageView.loadImage(urlString: apiResponse.urlToImage ?? "")
+        if apiResponse.urlToImage != nil && apiResponse.urlToImage != "" {
+            contentImageView.loadImage(urlString: apiResponse.urlToImage ?? "")
+        } else {
+            addGradientToView(view: contentImageView)
+        }
     }
     @objc func goToNewsWebTab(_ sender: UIButton) {
         guard let webVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsWebViewController") as? NewsWebViewController else {return}

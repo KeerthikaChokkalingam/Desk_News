@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,15 +52,34 @@
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIf-gS-C99">
+                                <rect key="frame" x="35" y="31" width="273" height="150"/>
+                                <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="bjN-O4-SAx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <color key="tintColor" red="0.0" green="0.23137254900000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="titleEdgeInsets" minX="-44" minY="70" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="-41" maxX="-140" maxY="0.0"/>
+                                <state key="normal" title="No Preview Image Available">
+                                    <color key="titleColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageReference key="image" image="photo" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="41" scale="medium" weight="semibold"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="fieldBgColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7xq-fw-sX7" secondAttribute="trailing" constant="15" id="6ha-zn-7co"/>
                             <constraint firstAttribute="trailing" secondItem="MfF-sv-jHF" secondAttribute="trailing" constant="15" id="8Pb-xB-0fh"/>
                             <constraint firstItem="7xq-fw-sX7" firstAttribute="top" secondItem="uFg-MB-S5V" secondAttribute="top" constant="16" id="Qul-xp-0Ew"/>
+                            <constraint firstItem="QIf-gS-C99" firstAttribute="trailing" secondItem="7xq-fw-sX7" secondAttribute="trailing" constant="-20" id="Uuz-JF-3rU"/>
                             <constraint firstAttribute="trailing" secondItem="Qam-zd-d0w" secondAttribute="trailing" constant="15" id="Vtn-5T-2Xi"/>
+                            <constraint firstItem="QIf-gS-C99" firstAttribute="bottom" secondItem="7xq-fw-sX7" secondAttribute="bottom" constant="-10" id="Y46-p2-bDL"/>
                             <constraint firstItem="MfF-sv-jHF" firstAttribute="leading" secondItem="uFg-MB-S5V" secondAttribute="leading" constant="15" id="ZPp-yn-hwq"/>
                             <constraint firstItem="VPB-2I-Pqt" firstAttribute="leading" secondItem="uFg-MB-S5V" secondAttribute="leading" constant="15" id="e3N-PD-vDn"/>
+                            <constraint firstItem="QIf-gS-C99" firstAttribute="leading" secondItem="7xq-fw-sX7" secondAttribute="leading" constant="20" id="eIA-kW-Wuf"/>
                             <constraint firstItem="MfF-sv-jHF" firstAttribute="top" secondItem="VPB-2I-Pqt" secondAttribute="bottom" constant="8" id="eT6-Bc-fsH"/>
                             <constraint firstItem="VPB-2I-Pqt" firstAttribute="top" secondItem="VEQ-8I-m0y" secondAttribute="bottom" constant="8" id="guL-db-Xmw"/>
                             <constraint firstAttribute="trailing" secondItem="VPB-2I-Pqt" secondAttribute="trailing" constant="15" id="imb-lS-x7S"/>
@@ -87,12 +107,14 @@
                 <outlet property="chanelNameLabel" destination="MfF-sv-jHF" id="rcY-Kd-EbY"/>
                 <outlet property="dateTimeLabel" destination="VPB-2I-Pqt" id="W7M-lb-gxR"/>
                 <outlet property="newsImageView" destination="7xq-fw-sX7" id="XKl-r2-oyP"/>
+                <outlet property="noPreViewButton" destination="QIf-gS-C99" id="Bsj-cw-xqx"/>
                 <outlet property="titleLabel" destination="Qam-zd-d0w" id="c1Z-Ba-sPJ"/>
             </connections>
             <point key="canvasLocation" x="116.79389312977099" y="122.1830985915493"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.23100000619888306" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

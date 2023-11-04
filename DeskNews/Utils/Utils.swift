@@ -77,10 +77,29 @@ class Utils {
         return false
     }
     func lazyLoaderShow(sender: UITableView) {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.startAnimating()
         spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: 70, height: CGFloat(70))
         sender.tableFooterView = spinner
         sender.tableFooterView?.isHidden = false
     }
+}
+
+func addGradientToView(view: UIView) {
+    let gradientLayer = CAGradientLayer()
+    gradientLayer.frame = view.bounds
+
+    // Define the colors for your gradient
+    let color1 = (UIColor().hexStringToUIColor(hex: "#003b4a")).cgColor
+    let color2 = (UIColor().hexStringToUIColor(hex: "C8FFE0")).cgColor
+    gradientLayer.colors = [color2, color1]
+
+    // Define the start and end points of the gradient
+    gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+    gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+
+    // You can adjust the locations of the colors if needed
+    gradientLayer.locations = [0.0, 1.0]
+
+    view.layer.insertSublayer(gradientLayer, at: 0)
 }
