@@ -114,10 +114,17 @@ extension SearchTabViewController: UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return ((viewModel?.tfShouldChnage(searchKey: newText, selfType: textField, range: range, string: string)) != nil)
+        newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        print(newText)
+        return true
         
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        viewModel?.tfEndEditing(searchKey: newText, originalValue: wholeResponse, filterVlaue: searchNewsResponse, baseView: searchListTableView)
+        viewModel = SearchTabViewModel()
+        let isReload = viewModel?.tfEndEditing(searchKey: newText, originalValue: wholeResponse, filterVlaue: searchNewsResponse, baseView: searchListTableView)
+        self.searchNewsResponse = (self.viewModel?.filteredValue)!
+        DispatchQueue.main.async {
+            self.searchListTableView.reloadData()
+        }
     }
 }

@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 class SearchTabViewModel: NSObject {
-    func tfEndEditing(searchKey: String, originalValue: [ArticalSet], filterVlaue: [ArticalSet], baseView: UITableView) {
+    
+    var filteredValue = [ArticalSet]()
+    
+    func tfEndEditing(searchKey: String, originalValue: [ArticalSet], filterVlaue: [ArticalSet], baseView: UITableView) -> Bool {
+        filteredValue.removeAll()
         var filterVlaue = filterVlaue
         let filter = originalValue.filter{item1 in
             (item1.title!).lowercased().contains(searchKey.lowercased())
@@ -24,11 +28,8 @@ class SearchTabViewModel: NSObject {
         if searchKey == "" {
             filterVlaue = originalValue
         }
-        baseView.reloadData()
-    }
-    func tfShouldChnage(searchKey: String, selfType: UITextField, range: NSRange, string: String) -> Bool {
-        var searchKey = searchKey
-        searchKey = (selfType.text! as NSString).replacingCharacters(in: range, with: string)
+        filteredValue = filterVlaue
+
         return true
     }
 }
@@ -120,6 +121,7 @@ extension SearchTabViewController {
     }
     
     @objc func labelTapped(_ sender: UITapGestureRecognizer) {
+        searchTextField.text = ""
         if let tappedLabel = sender.view as? UILabel {
             if tappedLabel == selectedLabel {
                 // Deselect the label
