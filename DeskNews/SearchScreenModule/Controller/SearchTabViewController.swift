@@ -78,13 +78,6 @@ extension SearchTabViewController {
         searchImageView.tintColor = UIColor.separator
         searchView.addSubview(searchImageView)
         searchTextField.leftView = searchView
-        searchTextField.rightViewMode = .always
-        let filterView = UIView(frame: CGRect(x: 15, y: 15, width: 60, height: 30))
-        let filterImageView = UIImageView(frame: CGRect(x: 15, y: 4, width: 22, height: 22))
-        filterImageView.image = UIImage(named: "filter")
-        filterImageView.tintColor = UIColor.separator
-        filterView.addSubview(filterImageView)
-        searchTextField.rightView = filterView
         searchTextField.font = UIFont.systemFont(ofSize: 15)
     }
     func apiCall(pageValue: String){
