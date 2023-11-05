@@ -22,6 +22,10 @@ class SelectedNewsViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
     
     @IBAction func backToNewsTab(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

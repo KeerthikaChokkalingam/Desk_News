@@ -18,6 +18,10 @@ class NewsWebViewController: UIViewController {
         super.viewDidLoad()
         loadPage()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
     
     @IBAction func backToFeedTab(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

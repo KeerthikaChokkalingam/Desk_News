@@ -48,6 +48,7 @@ class SearchTabViewController: UIViewController {
 }
 extension SearchTabViewController {
     func apiCall() {
+        tabBarController?.tabBar.isHidden = false
         if NetworkConnectionHandler().checkReachable() {
             if refresher {
             } else {

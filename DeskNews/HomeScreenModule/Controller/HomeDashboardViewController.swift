@@ -59,6 +59,7 @@ extension HomeDashboardViewController {
         })
     }
     func getNewsApiCall() {
+        tabBarController?.tabBar.isHidden = false
         if NetworkConnectionHandler().checkReachable() {
             if refresher {
             } else {
