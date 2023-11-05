@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -285,9 +286,26 @@
                                                         <color key="textColor" name="AccentColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMd-Td-tHA">
+                                                        <rect key="frame" x="35" y="95" width="323" height="150"/>
+                                                        <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="xLr-jZ-TbX"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                        <color key="tintColor" red="0.0" green="0.23137254900000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <inset key="titleEdgeInsets" minX="-44" minY="70" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="-41" maxX="-140" maxY="0.0"/>
+                                                        <state key="normal" title="No Preview Image Avilable">
+                                                            <color key="titleColor" red="0.0" green="0.23137254900000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <imageReference key="image" image="photo" catalog="system" symbolScale="medium"/>
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="41" scale="medium" weight="semibold"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="FMd-Td-tHA" firstAttribute="bottom" secondItem="3Lv-wk-A8x" secondAttribute="bottom" constant="-15" id="3dp-ew-0Ti"/>
                                                     <constraint firstAttribute="trailing" secondItem="3Lv-wk-A8x" secondAttribute="trailing" constant="20" id="3hK-IJ-iLN"/>
                                                     <constraint firstItem="3Lv-wk-A8x" firstAttribute="leading" secondItem="myk-2r-a9p" secondAttribute="leading" constant="20" id="67O-Il-Jhn"/>
                                                     <constraint firstAttribute="height" constant="800" id="70W-kE-0md"/>
@@ -301,6 +319,8 @@
                                                     <constraint firstItem="fYi-ug-rAm" firstAttribute="leading" secondItem="myk-2r-a9p" secondAttribute="leading" constant="15" id="aUu-7s-kgB"/>
                                                     <constraint firstAttribute="trailing" secondItem="fYi-ug-rAm" secondAttribute="trailing" constant="15" id="awu-6R-D8C"/>
                                                     <constraint firstItem="czL-IQ-Tzy" firstAttribute="top" secondItem="3Lv-wk-A8x" secondAttribute="bottom" constant="30" id="b9J-6j-ene"/>
+                                                    <constraint firstItem="FMd-Td-tHA" firstAttribute="leading" secondItem="3Lv-wk-A8x" secondAttribute="leading" constant="15" id="epo-FI-7fO"/>
+                                                    <constraint firstItem="FMd-Td-tHA" firstAttribute="trailing" secondItem="3Lv-wk-A8x" secondAttribute="trailing" constant="-15" id="j1u-gu-Zl1"/>
                                                     <constraint firstItem="sgx-7i-Tha" firstAttribute="centerY" secondItem="7sf-L5-zUw" secondAttribute="centerY" id="mho-Yt-7sQ"/>
                                                     <constraint firstItem="7WL-Sw-gcd" firstAttribute="leading" secondItem="myk-2r-a9p" secondAttribute="leading" constant="35" id="sxG-dY-6Bf"/>
                                                     <constraint firstItem="7sf-L5-zUw" firstAttribute="leading" secondItem="myk-2r-a9p" secondAttribute="leading" constant="15" id="t2t-lQ-Csi"/>
@@ -346,6 +366,7 @@
                         <outlet property="newDescriptionLabel" destination="fYi-ug-rAm" id="rfz-gb-ttR"/>
                         <outlet property="newFeedImageView" destination="3Lv-wk-A8x" id="Dnd-q5-K52"/>
                         <outlet property="newsTitle" destination="czL-IQ-Tzy" id="r8B-LV-W26"/>
+                        <outlet property="noPreviewImageButton" destination="FMd-Td-tHA" id="DXr-JA-WYg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uM-75-Hda" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -529,6 +550,7 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.23100000619888306" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

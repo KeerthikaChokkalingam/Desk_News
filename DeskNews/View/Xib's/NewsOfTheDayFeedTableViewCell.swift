@@ -54,9 +54,12 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
         newsContentLabel.text = apiResponse.title
         contentImageView.contentMode = .scaleAspectFill
         if apiResponse.urlToImage != nil && apiResponse.urlToImage != "" {
+            backGroundView.backgroundColor = .white
+            contentImageView.isHidden = false
             contentImageView.loadImage(urlString: apiResponse.urlToImage ?? "")
         } else {
-            addGradientToView(view: contentImageView)
+            contentImageView.isHidden = true
+            addGradientToView(view: backGroundView)
         }
     }
     @objc func goToNewsWebTab(_ sender: UIButton) {

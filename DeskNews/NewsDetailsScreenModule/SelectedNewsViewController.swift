@@ -9,6 +9,7 @@ import UIKit
 
 class SelectedNewsViewController: UIViewController {
     
+    @IBOutlet weak var noPreviewImageButton: UIButton!
     @IBOutlet weak var chanelName: UILabel!
     @IBOutlet weak var newFeedImageView: CustomImageView!
     @IBOutlet weak var newDescriptionLabel: UILabel!
@@ -35,7 +36,14 @@ class SelectedNewsViewController: UIViewController {
 extension SelectedNewsViewController {
     func setUpUI() {
         newFeedImageView.layer.cornerRadius = 15
-        newFeedImageView.loadImage(urlString: selectedNewsData.urlToImage ?? "")
+        noPreviewImageButton.layer.cornerRadius = 15
+        if selectedNewsData.urlToImage != nil && selectedNewsData.urlToImage != "" {
+            noPreviewImageButton.isHidden = true
+            newFeedImageView.loadImage(urlString: selectedNewsData.urlToImage ?? "")
+        } else {
+            newFeedImageView.isHidden = true
+            noPreviewImageButton.isHidden = false
+        }
         newsTitle.text = selectedNewsData.title
         chanelName.text = selectedNewsData.source?.name
         let content = selectedNewsData.content?.split(separator: "[")
