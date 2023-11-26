@@ -25,6 +25,7 @@
                     <connections>
                         <segue destination="m5y-yC-vTL" kind="relationship" relationship="viewControllers" id="j2P-hT-xvZ"/>
                         <segue destination="dfg-2g-KMe" kind="relationship" relationship="viewControllers" id="Pob-w4-19g"/>
+                        <segue destination="cao-dh-6HN" kind="relationship" relationship="viewControllers" id="igc-Wv-Oth"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbe-x6-Iz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -543,10 +544,56 @@
             </objects>
             <point key="canvasLocation" x="2583.969465648855" y="148.59154929577466"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="ebv-Ws-i3v">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="cao-dh-6HN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="ByY-BB-ZKm"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iqE-jJ-ug3">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XTx-VJ-nhl" kind="relationship" relationship="rootViewController" id="3tV-hN-BMH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVc-y0-5Fe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4045" y="149"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="NAn-eV-V4Z">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="XTx-VJ-nhl" customClass="SettingsViewController" customModule="DeskNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hUf-cv-xhM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SkU-Gx-0Kf">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bnE-dH-ZHA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SkU-Gx-0Kf" firstAttribute="top" secondItem="bnE-dH-ZHA" secondAttribute="top" id="9yo-25-V1L"/>
+                            <constraint firstItem="SkU-Gx-0Kf" firstAttribute="leading" secondItem="bnE-dH-ZHA" secondAttribute="leading" id="EMn-5G-zAx"/>
+                            <constraint firstItem="bnE-dH-ZHA" firstAttribute="trailing" secondItem="SkU-Gx-0Kf" secondAttribute="trailing" id="WQO-QJ-ZH1"/>
+                            <constraint firstItem="bnE-dH-ZHA" firstAttribute="bottom" secondItem="SkU-Gx-0Kf" secondAttribute="bottom" id="iaz-jp-zQp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lae-My-S70"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAR-Y3-iHP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4999" y="149"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
