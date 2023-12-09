@@ -362,6 +362,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="7WL-Sw-gcd" id="Oaz-2J-5Cf"/>
                         <outlet property="chanelName" destination="sgx-7i-Tha" id="ZUw-fA-ohU"/>
                         <outlet property="dateLabel" destination="7sf-L5-zUw" id="v0v-Gc-vRx"/>
                         <outlet property="newDescriptionLabel" destination="fYi-ug-rAm" id="rfz-gb-ttR"/>
