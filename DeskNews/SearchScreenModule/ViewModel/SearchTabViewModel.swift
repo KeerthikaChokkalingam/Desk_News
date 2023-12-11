@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import CoreImage
+import CoreGraphics
 
 class SearchTabViewModel: NSObject {
     
@@ -32,6 +34,29 @@ class SearchTabViewModel: NSObject {
 
         return true
     }
+    func setButtonTextColor(fromImage image: UIImage) -> UIColor  {
+        var textColor: UIColor = .black
+        let ciImage = CIImage(image: image)
+        if let ciImage = ciImage  {
+            
+            // Create a context for analyzing the image
+            let context = CIContext(options: nil)
+            
+            // Define a region of interest (ROI) if needed, e.g., CGRect(x: 0, y: 0, width: 100, height: 100)
+            let roiRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+            
+            // Render the image in the ROI
+            let renderedImage = context.createCGImage(ciImage, from: roiRect)
+            
+            // Process the rendered image (e.g., calculate average color, brightness)
+            let averageColor = renderedImage?.averageColor ?? .white
+            
+            // Choose the text color based on the processed color
+             textColor = averageColor.isLight ? .black : .white
+        }
+        return textColor
+    }
+    
 }
 extension SearchTabViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -161,4 +186,43 @@ extension SearchTabViewController {
         }
     }
     
+}
+extension CGImage {
+    var averageColor: UIColor {
+        guard let pixelData = dataProvider?.data else { return .clear }
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+
+        var totalRed = 0
+        var totalGreen = 0
+        var totalBlue = 0
+
+        for x in 0..<width {
+            for y in 0..<height {
+                let pixelInfo: Int = ((Int(width) * Int(y)) + Int(x)) * 4
+
+                let red = CGFloat(data[pixelInfo])
+                let green = CGFloat(data[pixelInfo + 1])
+                let blue = CGFloat(data[pixelInfo + 2])
+
+                totalRed += Int(red)
+                totalGreen += Int(green)
+                totalBlue += Int(blue)
+            }
+        }
+
+        let count = width * height
+        let red = CGFloat(totalRed) / CGFloat(count)
+        let green = CGFloat(totalGreen) / CGFloat(count)
+        let blue = CGFloat(totalBlue) / CGFloat(count)
+
+        return UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1.0)
+    }
+}
+
+extension UIColor {
+    var isLight: Bool {
+        var white: CGFloat = 0.0
+        getWhite(&white, alpha: nil)
+        return white > 0.5
+    }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class SelectedNewsViewController: UIViewController {
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var noPreviewImageButton: UIButton!
     @IBOutlet weak var chanelName: UILabel!
     @IBOutlet weak var newFeedImageView: CustomImageView!
@@ -17,6 +18,7 @@ class SelectedNewsViewController: UIViewController {
     @IBOutlet weak var newsTitle: UILabel!
     
     var selectedNewsData = ArticalSet()
+    var searchModelBase: SearchTabViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,12 @@ extension SelectedNewsViewController {
         noPreviewImageButton.layer.cornerRadius = 15
         if selectedNewsData.urlToImage != nil && selectedNewsData.urlToImage != "" {
             noPreviewImageButton.isHidden = true
-            newFeedImageView.loadImage(urlString: selectedNewsData.urlToImage ?? "")
+            newFeedImageView.loadImage(urlString: selectedNewsData.urlToImage ?? "") { success, error  in
+                if success == "success" && error == 0 {
+                    self.searchModelBase = SearchTabViewModel()
+                    self.backButton.tintColor = self.searchModelBase.setButtonTextColor(fromImage: self.newFeedImageView.image ?? UIImage())
+                }
+            }
         } else {
             newFeedImageView.isHidden = true
             noPreviewImageButton.isHidden = false
