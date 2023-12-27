@@ -31,6 +31,7 @@ extension SettingsViewController {
     func setUpTableView() {
         settingsModelClass = SettingsModel()
         settingsTableView.register(UINib(nibName: "changeAppearenceTableViewCell", bundle: nil), forCellReuseIdentifier: "changeAppearenceTableViewCell")
+        settingsTableView.register(UINib(nibName: "DropDownTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownTableViewCell")
     }
 }
 
@@ -45,6 +46,19 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "changeAppearenceTableViewCell", for: indexPath) as? changeAppearenceTableViewCell else {return UITableViewCell()}
             cell.customDel = self
+            cell.selectionStyle = .none
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownTableViewCell", for: indexPath) as? DropDownTableViewCell else {return UITableViewCell()}
+            cell.titleLabel.text = "Landing Page Category"
+            cell.selectedValue.text = "General"
+            cell.selectionStyle = .none
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownTableViewCell", for: indexPath) as? DropDownTableViewCell else {return UITableViewCell()}
+            cell.titleLabel.text = "Select Country"
+            cell.selectedValue.text = "India"
+            cell.selectionStyle = .none
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "changeAppearenceTableViewCell", for: indexPath) as? changeAppearenceTableViewCell else {return UITableViewCell()}
@@ -56,7 +70,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let currentData = settingsModelClass?.settingsContent[indexPath.row]
         switch (currentData?["row Count"] as? Int) {
         case 1:
-            return 50
+            return 70
+        case 2:
+            return 70
+        case 3:
+            return 70
         default:
             return 0
         }
@@ -66,6 +84,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SettingsViewController: SettingsScreenDelegate {
     func gettingAppMode(appModeValue: String) {
-        print(appModeValue)
+        if appModeValue == "light" {
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
+        } else {
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+        }
     }
 }

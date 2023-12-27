@@ -9,19 +9,21 @@ import UIKit
 
 class changeAppearenceTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var appModeSetter: UISwitch!
     weak var customDel: SettingsScreenDelegate!
 
-    @IBOutlet weak var appModeSetter: UISegmentedControl!
     @IBOutlet weak var bgView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        bgView.layer.cornerRadius = 15
+        appModeSetter.transform = CGAffineTransformMakeScale(0.90, 0.90);
         if self.traitCollection.userInterfaceStyle == .dark {
-            appModeSetter.selectedSegmentIndex = 1
+            appModeSetter.isOn = true
             print("Dark Mode")
             // Do something for dark mode
         } else {
-            appModeSetter.selectedSegmentIndex = 0
+            appModeSetter.isOn = false
             print("Light Mode")
             // Do something for light mode
         }

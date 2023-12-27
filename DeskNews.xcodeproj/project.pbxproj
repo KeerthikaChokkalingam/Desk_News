@@ -46,6 +46,8 @@
 		37F76A662AB1F97400765604 /* SelectedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F76A652AB1F97400765604 /* SelectedNewsViewController.swift */; };
 		7F00A20F2B18885B000C68AD /* changeAppearenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00A20D2B18885B000C68AD /* changeAppearenceTableViewCell.swift */; };
 		7F00A2102B18885B000C68AD /* changeAppearenceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F00A20E2B18885B000C68AD /* changeAppearenceTableViewCell.xib */; };
+		7FB3D47A2B3C4C3600B317FA /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3D4782B3C4C3600B317FA /* DropDownTableViewCell.swift */; };
+		7FB3D47B2B3C4C3600B317FA /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB3D4792B3C4C3600B317FA /* DropDownTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		37F76A652AB1F97400765604 /* SelectedNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNewsViewController.swift; sourceTree = "<group>"; };
 		7F00A20D2B18885B000C68AD /* changeAppearenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeAppearenceTableViewCell.swift; sourceTree = "<group>"; };
 		7F00A20E2B18885B000C68AD /* changeAppearenceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = changeAppearenceTableViewCell.xib; sourceTree = "<group>"; };
+		7FB3D4782B3C4C3600B317FA /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
+		7FB3D4792B3C4C3600B317FA /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +385,8 @@
 			children = (
 				7F00A20D2B18885B000C68AD /* changeAppearenceTableViewCell.swift */,
 				7F00A20E2B18885B000C68AD /* changeAppearenceTableViewCell.xib */,
+				7FB3D4782B3C4C3600B317FA /* DropDownTableViewCell.swift */,
+				7FB3D4792B3C4C3600B317FA /* DropDownTableViewCell.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 			files = (
 				3787E93E2A96065E00592C93 /* NewsOfTheDayFeedTableViewCell.xib in Resources */,
 				3769E6702A9F4C600066E4E1 /* SingleNewsCollectionViewCell.xib in Resources */,
+				7FB3D47B2B3C4C3600B317FA /* DropDownTableViewCell.xib in Resources */,
 				376EE1FC2A94B4A9000611A9 /* LaunchScreen.storyboard in Resources */,
 				7F00A2102B18885B000C68AD /* changeAppearenceTableViewCell.xib in Resources */,
 				376EE1F92A94B4A9000611A9 /* Assets.xcassets in Resources */,
@@ -524,6 +531,7 @@
 			files = (
 				377917202B11DF030020C874 /* SettingsModel.swift in Sources */,
 				3715DA892A988697008AFD0F /* APIHandler.swift in Sources */,
+				7FB3D47A2B3C4C3600B317FA /* DropDownTableViewCell.swift in Sources */,
 				3730936C2AB185E00047C573 /* CustomImageView.swift in Sources */,
 				37098CDA2ABDA78700006C95 /* SearchTabViewModel.swift in Sources */,
 				37F2F41E2AB5A56000CAE6CE /* HomeTabBarController.swift in Sources */,
