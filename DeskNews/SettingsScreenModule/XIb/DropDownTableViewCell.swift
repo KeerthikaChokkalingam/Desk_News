@@ -25,5 +25,21 @@ class DropDownTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    @objc func addMenuView(_ sender: UIGestureRecognizer) {
+        guard let viewBase = sender.view else {
+            return
+        }
+
+        let popUpView = CustomListView(frame: CGRect(x: selectionView.frame.origin.x + 1, y: selectionView.frame.origin.y + selectionView.frame.size.height, width: selectionView.frame.size.width, height: 150))
+
+        if sender.view?.tag == 20 {
+            popUpView.listValue = AppConstant.categories
+        } else {
+            popUpView.listValue = AppConstant.countryList
+        }
+        popUpView.tag = 50
+        popUpView.listView?.reloadData()
+        self.addSubview(popUpView)
+    }
     
 }

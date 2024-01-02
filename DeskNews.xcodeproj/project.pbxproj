@@ -48,6 +48,7 @@
 		7F00A2102B18885B000C68AD /* changeAppearenceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F00A20E2B18885B000C68AD /* changeAppearenceTableViewCell.xib */; };
 		7FB3D47A2B3C4C3600B317FA /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3D4782B3C4C3600B317FA /* DropDownTableViewCell.swift */; };
 		7FB3D47B2B3C4C3600B317FA /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB3D4792B3C4C3600B317FA /* DropDownTableViewCell.xib */; };
+		7FB79F992B3C588900B054A9 /* CustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB79F982B3C588900B054A9 /* CustomListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		7F00A20E2B18885B000C68AD /* changeAppearenceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = changeAppearenceTableViewCell.xib; sourceTree = "<group>"; };
 		7FB3D4782B3C4C3600B317FA /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		7FB3D4792B3C4C3600B317FA /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
+		7FB79F982B3C588900B054A9 /* CustomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +291,7 @@
 				3715DA862A986AB8008AFD0F /* Utils.swift */,
 				3715DA8A2A98C6A0008AFD0F /* NetworkConnectionHandler.swift */,
 				3730936B2AB185E00047C573 /* CustomImageView.swift */,
+				7FB79F982B3C588900B054A9 /* CustomListView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				3787E9332A95F96400592C93 /* DashboardViewModel.swift in Sources */,
 				3769E66B2A9F4B4C0066E4E1 /* LiveNewsContentTableViewCell.swift in Sources */,
 				7F00A20F2B18885B000C68AD /* changeAppearenceTableViewCell.swift in Sources */,
+				7FB79F992B3C588900B054A9 /* CustomListView.swift in Sources */,
 				376EE1F22A94B4A9000611A9 /* SceneDelegate.swift in Sources */,
 				37098CDC2ABDB5A200006C95 /* AlertWithIconView.swift in Sources */,
 				3730936E2AB1D1D50047C573 /* NewsWebViewController.swift in Sources */,
