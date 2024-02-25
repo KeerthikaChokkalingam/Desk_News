@@ -303,7 +303,7 @@
                                                         </state>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="FMd-Td-tHA" firstAttribute="bottom" secondItem="3Lv-wk-A8x" secondAttribute="bottom" constant="-15" id="3dp-ew-0Ti"/>
                                                     <constraint firstAttribute="trailing" secondItem="3Lv-wk-A8x" secondAttribute="trailing" constant="20" id="3hK-IJ-iLN"/>
@@ -329,6 +329,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="myk-2r-a9p" firstAttribute="width" secondItem="XmP-BG-u7b" secondAttribute="width" id="Aay-e1-QTs"/>
                                             <constraint firstAttribute="bottom" secondItem="myk-2r-a9p" secondAttribute="bottom" id="RHr-Pb-jUH"/>
@@ -338,7 +339,7 @@
                                         </constraints>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="XmP-BG-u7b" secondAttribute="trailing" id="8Si-bR-qLb"/>
                                     <constraint firstAttribute="bottom" secondItem="XmP-BG-u7b" secondAttribute="bottom" id="A5r-6M-CMb"/>
@@ -352,7 +353,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dMp-0G-WUo"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Wd8-Av-nw3" secondAttribute="bottom" id="FWM-Eo-N1M"/>
                             <constraint firstItem="Wd8-Av-nw3" firstAttribute="leading" secondItem="cgc-mI-1lA" secondAttribute="leading" id="a30-oT-5ew"/>
