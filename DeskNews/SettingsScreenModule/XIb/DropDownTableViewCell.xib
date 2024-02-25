@@ -22,9 +22,9 @@
                         <rect key="frame" x="1" y="5" width="348" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Landing Page Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3j-IC-8N2">
-                                <rect key="frame" x="15" y="12" width="179.33333333333334" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" name="AccentColor"/>
+                                <rect key="frame" x="15" y="13.33333333333333" width="179.33333333333334" height="17.666666666666671"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gE1-Ki-JH0">
@@ -33,8 +33,8 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ee-pv-Zo6">
                                         <rect key="frame" x="10" y="1" width="80" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" name="fieldBgColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k8-8o-QTo">
@@ -43,7 +43,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="gE1-fO-040"/>
                                         </constraints>
-                                        <color key="tintColor" name="fieldBgColor"/>
+                                        <color key="tintColor" red="0.0" green="0.23137254900000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.down" catalog="system">
                                             <color key="titleColor" name="fieldBgColor"/>
@@ -51,7 +51,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Dwz-ss-Skh"/>
                                     <constraint firstItem="5Ee-pv-Zo6" firstAttribute="top" secondItem="gE1-Ki-JH0" secondAttribute="top" constant="1" id="IIC-RP-n0y"/>
@@ -64,7 +64,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="fieldBgColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.23137254900000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gE1-Ki-JH0" firstAttribute="centerY" secondItem="J3j-IC-8N2" secondAttribute="centerY" id="CNJ-JP-ffT"/>
                             <constraint firstItem="J3j-IC-8N2" firstAttribute="leading" secondItem="9p5-iR-ZHT" secondAttribute="leading" constant="15" id="EuJ-hf-IMz"/>
@@ -75,7 +75,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="9p5-iR-ZHT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="Kco-a6-LZy"/>
                     <constraint firstAttribute="bottom" secondItem="9p5-iR-ZHT" secondAttribute="bottom" constant="5" id="kCs-OR-zqC"/>
@@ -96,9 +96,6 @@
     </objects>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.23100000619888306" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="fieldBgColor">
             <color red="0.97600001096725464" green="0.98000001907348633" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

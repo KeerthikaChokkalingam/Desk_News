@@ -9,6 +9,8 @@ import UIKit
 
 class HomeDashboardViewController: UIViewController {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var tableViewBgView: UIView!
     @IBOutlet weak var liveNewsList: UITableView!
     
     var viewModel: DashboardViewModel?
@@ -42,6 +44,11 @@ extension HomeDashboardViewController {
         indicator = Utils().setUpLoader(sender: view)
         let refresher = Utils().addRefreshController(sender: liveNewsList)
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        self.view.backgroundColor = colorManager().mainBgColor
+        self.liveNewsList.backgroundColor = colorManager().mainBgColor
+        self.tableViewBgView.backgroundColor = colorManager().mainBgColor
+        self.titleLbl.textColor = colorManager().tabBarTintColor
     }
     func apiCall(){
         apiHelper = APIHandler()

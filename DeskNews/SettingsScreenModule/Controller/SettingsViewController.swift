@@ -7,9 +7,7 @@
 
 import UIKit
 
-@objc protocol SettingsScreenDelegate: AnyObject {
-    @objc optional func gettingAppMode(appModeValue: String)
-}
+
 
 class SettingsViewController: UIViewController {
 
@@ -23,6 +21,7 @@ class SettingsViewController: UIViewController {
         self.view.addGestureRecognizer(dismissDropDown)
         setUpTableView()
     }
+    
     @objc func dismissDropDown(_ sender: UIGestureRecognizer){
         if let list = sender.view?.viewWithTag(50) {
             list.removeFromSuperview()
@@ -38,6 +37,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController {
     func setUpTableView() {
         settingsModelClass = SettingsModel()
+        settingsTableView.isScrollEnabled = false
         settingsTableView.register(UINib(nibName: "changeAppearenceTableViewCell", bundle: nil), forCellReuseIdentifier: "changeAppearenceTableViewCell")
         settingsTableView.register(UINib(nibName: "DropDownTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownTableViewCell")
     }
@@ -46,7 +46,6 @@ extension SettingsViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
-//        return settingsModelClass?.settingsContent.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,7 +53,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             switch (currentData?["row Count"] as? Int) {
             case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "changeAppearenceTableViewCell", for: indexPath) as? changeAppearenceTableViewCell else {return UITableViewCell()}
-                cell.customDel = self
+                cell.delegate = self
                 cell.selectionStyle = .none
                 return cell
             case 2:
@@ -86,15 +85,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 70
     }
-    
 }
 
 extension SettingsViewController: SettingsScreenDelegate {
-    func gettingAppMode(appModeValue: String) {
-        if appModeValue == "light" {
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
-        } else {
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
-        }
+    func didSelectThemeSwitch() {
+        Thememanager.shared.switchTheme()
     }
 }

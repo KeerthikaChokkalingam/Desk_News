@@ -83,6 +83,19 @@ class Utils {
         sender.tableFooterView = spinner
         sender.tableFooterView?.isHidden = false
     }
+    func getAppMode() -> Int {
+        // 0- dark mode, 1- light mode
+        if let retrievedString = UserDefaults.standard.string(forKey: "appMode") {
+            if retrievedString == "LightMode" {
+                return 1
+            } else {
+                return 0
+            }
+        } else {
+            // if this key is nil by default app mode is light
+            return 1
+        }
+    }
 }
 
 func addGradientToView(view: UIView) {

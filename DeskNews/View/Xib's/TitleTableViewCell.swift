@@ -12,6 +12,7 @@ class TitleTableViewCell: UITableViewCell {
     @IBOutlet weak var liveNewsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        liveNewsLabel.textColor = colorManager().tabBarTintColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

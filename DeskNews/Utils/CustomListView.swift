@@ -28,7 +28,7 @@ class CustomListView: UIView, UITableViewDelegate, UITableViewDataSource {
             listView.delegate = self
             listView.dataSource = self
             listView.backgroundColor = UIColor().hexStringToUIColor(hex: "#003b4a")
-
+            listView.isScrollEnabled = true
             if #available(iOS 11.0, *) {
                 listView.clipsToBounds = true
                 listView.layer.cornerRadius = 10

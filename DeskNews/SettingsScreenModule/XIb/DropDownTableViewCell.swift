@@ -14,6 +14,10 @@ class DropDownTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedValue: UILabel!
     @IBOutlet weak var selectionView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    var showCategories: Bool = false
+    var showCountryList: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.layer.cornerRadius = 15
@@ -33,13 +37,28 @@ class DropDownTableViewCell: UITableViewCell {
         let popUpView = CustomListView(frame: CGRect(x: selectionView.frame.origin.x + 1, y: selectionView.frame.origin.y + selectionView.frame.size.height, width: selectionView.frame.size.width, height: 150))
 
         if sender.view?.tag == 20 {
+            if showCategories == false {
+                showCategories = true
+            } else {
+                showCategories = false
+            }
             popUpView.listValue = AppConstant.categories
         } else {
+            if showCountryList == false {
+                showCountryList = true
+            } else {
+                showCountryList = false
+            }
             popUpView.listValue = AppConstant.countryList
         }
         popUpView.tag = 50
         popUpView.listView?.reloadData()
-        self.addSubview(popUpView)
+        if showCategories == false && showCountryList == false {
+            if let popView = self.viewWithTag(50) as? UIView {
+                popView.removeFromSuperview()
+            }
+        } else {
+            self.addSubview(popUpView)
+        }
     }
-    
 }

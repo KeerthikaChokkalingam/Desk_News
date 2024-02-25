@@ -23,7 +23,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         bgView.layer.cornerRadius = 15
         newsImageView.layer.cornerRadius = 15
         selectionStyle = .none
-        bgView.layer.cornerRadius = 8.0 // Optional: Add corner radius for rounded corners
+        bgView.layer.cornerRadius = 15
         bgView.layer.masksToBounds = false
         bgView.layer.shadowColor = UIColor().hexStringToUIColor(hex: "#F9FAFB").cgColor
         bgView.layer.shadowOpacity = 0.3

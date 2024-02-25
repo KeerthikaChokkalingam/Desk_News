@@ -47,6 +47,14 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SingleNewsCollectionViewCell", for: indexPath) as? SingleNewsCollectionViewCell else {return UICollectionViewCell()}
+        cell.mainContentView.backgroundColor = colorManager().tabBarTintColor
+        cell.mainContentView.layer.shadowColor = colorManager().mainBgColor.cgColor
+        cell.mainContentView.layer.shadowOpacity = 0.5
+        cell.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cell.mainContentView.layer.shadowRadius = 4
+        cell.newsTitleLabel.textColor = colorManager().mainBgColor
+        cell.newsAuthorNameLabel.textColor = colorManager().mainBgColor
+        cell.newsPublishedTimeLabel.textColor = colorManager().mainBgColor
         if collectionValues.count != 0 {
             cell.loadValues(apiResponse: collectionValues[indexPath.row])
         }

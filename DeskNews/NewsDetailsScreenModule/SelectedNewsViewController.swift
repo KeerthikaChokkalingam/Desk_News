@@ -27,6 +27,7 @@ class SelectedNewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        handleAppMode()
     }
     
     @IBAction func backToNewsTab(_ sender: UIButton) {
@@ -69,6 +70,15 @@ extension SelectedNewsViewController {
             dateLabel.text = timeAgoString + " ago"
         } else {
             dateLabel.text = timeAgoString
+        }
+    }
+    func handleAppMode() {
+        if let retrievedString = UserDefaults.standard.string(forKey: "appMode") {
+            if retrievedString == "LightMode" {
+                print("light Mode")
+            } else {
+                print("dark mode")
+            }
         }
     }
 }

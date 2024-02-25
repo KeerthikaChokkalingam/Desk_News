@@ -86,6 +86,12 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsFeedTableViewCell", for: indexPath) as? NewsFeedTableViewCell else {return UITableViewCell()}
+        cell.bgView.backgroundColor = colorManager().tabBarTintColor
+        cell.chanelNameLabel.textColor = colorManager().mainBgColor
+        cell.dateTimeLabel.textColor = colorManager().mainBgColor
+        cell.authorLabel.textColor = colorManager().mainBgColor
+        cell.titleLabel.textColor = colorManager().mainBgColor
+              
         if (searchNewsResponse.count) > 0 {
             let currentData = searchNewsResponse[indexPath.row]
             cell.applyServerResult(values: currentData)

@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol SettingsScreenDelegate: AnyObject {
+    func didSelectThemeSwitch()
+}
+
 class changeAppearenceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var appModeSetter: UISwitch!
-    weak var customDel: SettingsScreenDelegate!
+    
+    weak var delegate: SettingsScreenDelegate?
 
     @IBOutlet weak var bgView: UIView!
     
@@ -35,16 +40,9 @@ class changeAppearenceTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func appModeChanger(_ sender: UISegmentedControl) {
-        print("sender inde: \(sender.selectedSegmentIndex)")
-        if sender.selectedSegmentIndex == 0 {
-            if customDel != nil {
-                customDel.gettingAppMode?(appModeValue: "light")
-            }
-        } else {
-            if customDel != nil {
-                customDel.gettingAppMode?(appModeValue: "dark")
-            }
+    @IBAction func appModeChanger(_ sender: Any) {
+        if delegate != nil {
+            delegate?.didSelectThemeSwitch()
         }
     }
 }

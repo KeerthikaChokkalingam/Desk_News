@@ -9,6 +9,10 @@ import UIKit
 
 class SearchTabViewController: UIViewController {
     
+    @IBOutlet weak var scrollBgColor: UIView!
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var tableBgView: UIView!
     @IBOutlet weak var searchListTableView: UITableView!
     @IBOutlet weak var categoryCollectionView: UIScrollView!
     @IBOutlet weak var lineViewTrailingAnchor: NSLayoutConstraint!
@@ -67,6 +71,13 @@ extension SearchTabViewController {
         lineView.layer.cornerRadius = 2
         highLightedView.layer.cornerRadius = 2
         categoryCollectionView.delegate = self
+        self.view.backgroundColor = colorManager().mainBgColor
+        self.tableBgView.backgroundColor = colorManager().mainBgColor
+        self.searchView.backgroundColor = colorManager().mainBgColor
+        self.titleView.backgroundColor = colorManager().mainBgColor
+        self.lineView.backgroundColor = colorManager().mainBgColor
+        
+
     }
     func setUpSearchTextField() {
         searchTextField.delegate = self
