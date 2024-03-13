@@ -50,9 +50,9 @@ extension HomeDashboardViewController {
         self.tableViewBgView.backgroundColor = colorManager().mainBgColor
         self.titleLbl.textColor = colorManager().tabBarTintColor
     }
-    func apiCall(){
+    func apiCall(country: String, category: String){
         apiHelper = APIHandler()
-        apiHelper?.GetNewsForDashboardApiCall(data: APIConstants.sourceUrl, completion: { [weak self] responseData, errorMessagge in
+        apiHelper?.GetNewsForDashboardApiCall(data: APIConstants.generateURL(country: country, category: category, page: "1"), completion: { [weak self] responseData, errorMessagge in
             guard let self else {return}
             if errorMessagge == nil {
                 guard let responseData else {return}
@@ -67,12 +67,37 @@ extension HomeDashboardViewController {
     }
     func getNewsApiCall() {
         tabBarController?.tabBar.isHidden = false
+        var countryValue: String = ""
+        var categoryValue: String = ""
         if NetworkConnectionHandler().checkReachable() {
             if refresher {
             } else {
                 Utils().startLoading(sender: indicator, wholeView: view)
             }
-            apiCall()
+            if let counrty = UserDefaults.standard.string(forKey: "country") {
+                countryValue = counrty
+                if let categories = UserDefaults.standard.string(forKey: "categories") {
+                    categoryValue = categories
+                }
+            }else{
+                if let categories = UserDefaults.standard.string(forKey: "categories") {
+                    categoryValue = categories
+                    if let country = UserDefaults.standard.string(forKey: "country") {
+                        countryValue = country
+                    }
+                }
+            }
+            if categoryValue != "" && countryValue != "" {
+                apiCall(country: countryValue, category: categoryValue)
+
+            } else if countryValue == "" && categoryValue != "" {
+                apiCall(country: "in", category: categoryValue)
+
+            } else if countryValue == "" && categoryValue != "" {
+                apiCall(country: countryValue, category: "general")
+            } else {
+                apiCall(country: "in", category: "general")
+            }
         } else {
             internetFailure(childTableView: liveNewsList)
         }

@@ -69,7 +69,6 @@ extension SearchTabViewController: UIScrollViewDelegate {
         let threshold: CGFloat = 10.0
         
         if offsetX > contentWidth - scrollViewWidth - threshold {
-//            print("reached")
             // The scroll view has reached the right end
             // You can perform your desired action here
             lineViewTrailingAnchor.constant = -25
@@ -110,7 +109,18 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
                     Utils().lazyLoaderShow(sender: tableView)
                     let page = (wholeResponse.count / 2)
                     let pageCount = (page / 10) + 1
-                    apiCall(pageValue: String(pageCount))
+                    
+                    var countryValue: String = ""
+                    if let counrty = UserDefaults.standard.string(forKey: "country") {
+                        countryValue = counrty
+                    }
+                    if countryValue != "" {
+                        apiCall(pageValue: String(pageCount), country: countryValue, category: selectedCategory)
+
+                    } else if countryValue == "" {
+                        apiCall(pageValue: String(pageCount), country: "in", category: selectedCategory)
+
+                    } 
                 } else {
                     tableView.tableFooterView = nil
                 }
@@ -170,7 +180,19 @@ extension SearchTabViewController {
                 searchNewsResponse.removeAll()
                 // Reload table view
                 searchListTableView.reloadData()
-                apiCall(pageValue: "1")
+                
+                var countryValue: String = ""
+                if let counrty = UserDefaults.standard.string(forKey: "country") {
+                    countryValue = counrty
+                }
+                if countryValue != "" {
+                    apiCall(pageValue: "1", country: countryValue, category: selectedCategory)
+
+                } else if countryValue == ""  {
+                    apiCall(pageValue: "1", country: "in", category: selectedCategory)
+
+                }
+                
                 if self.traitCollection.userInterfaceStyle == .dark {
                     tappedLabel.textColor = .white
                 } else {

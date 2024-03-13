@@ -7,8 +7,9 @@
 
 import UIKit
 
-class DropDownTableViewCell: UITableViewCell {
 
+class DropDownTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var dropDownButton: UIButton!
     @IBOutlet weak var selectedValue: UILabel!
@@ -18,47 +19,37 @@ class DropDownTableViewCell: UITableViewCell {
     var showCategories: Bool = false
     var showCountryList: Bool = false
     
+    var options: [String] = []
+    weak var dropdownDelegate: CustomDropdownDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.layer.cornerRadius = 15
         selectionView.layer.cornerRadius = 8
         selectionView.layer.borderColor = (UIColor().hexStringToUIColor(hex: "#003b4a")).cgColor
         selectionView.layer.borderWidth = 0.5
+        selectionView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDropdownTap))
+        selectionView.addGestureRecognizer(tapGesture)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    @objc func addMenuView(_ sender: UIGestureRecognizer) {
-        guard let viewBase = sender.view else {
+    
+    @objc private func handleDropdownTap() {
+        
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {
             return
         }
-
-        let popUpView = CustomListView(frame: CGRect(x: selectionView.frame.origin.x + 1, y: selectionView.frame.origin.y + selectionView.frame.size.height, width: selectionView.frame.size.width, height: 150))
-
-        if sender.view?.tag == 20 {
-            if showCategories == false {
-                showCategories = true
-            } else {
-                showCategories = false
-            }
-            popUpView.listValue = AppConstant.categories
-        } else {
-            if showCountryList == false {
-                showCountryList = true
-            } else {
-                showCountryList = false
-            }
-            popUpView.listValue = AppConstant.countryList
+        if let tableView = self.superview as? UITableView {
+            let frameInSuperview = tableView.convert(selectionView.frame, from: self)
+            let customView = CustomDropdownView(frame: CGRect(x: frameInSuperview.minX + 15, y: frameInSuperview.maxY + 118, width: frameInSuperview.width, height: 230), options: options)
+            customView.backgroundColor = UIColor.blue
+            customView.tag = 12345
+            customView.delegate = dropdownDelegate
+            window.addSubview(customView)
         }
-        popUpView.tag = 50
-        popUpView.listView?.reloadData()
-        if showCategories == false && showCountryList == false {
-            if let popView = self.viewWithTag(50) as? UIView {
-                popView.removeFromSuperview()
-            }
-        } else {
-            self.addSubview(popUpView)
-        }
+        
     }
 }

@@ -53,12 +53,22 @@ class SearchTabViewController: UIViewController {
 extension SearchTabViewController {
     func apiCall() {
         tabBarController?.tabBar.isHidden = false
+        var countryValue: String = ""
         if NetworkConnectionHandler().checkReachable() {
             if refresher {
             } else {
                 Utils().startLoading(sender: indicator, wholeView: view)
             }
-            apiCall(pageValue: "1")
+            if let counrty = UserDefaults.standard.string(forKey: "country") {
+                countryValue = counrty
+            }
+            if countryValue != ""  {
+                apiCall(pageValue: "1", country: countryValue, category: selectedCategory)
+
+            } else if countryValue == ""  {
+                apiCall(pageValue: "1", country: "in", category: selectedCategory)
+
+            }
         } else {
             internetFailure(childTableView: searchListTableView)
         }
@@ -92,9 +102,9 @@ extension SearchTabViewController {
         searchTextField.leftView = searchView
         searchTextField.font = UIFont.systemFont(ofSize: 15)
     }
-    func apiCall(pageValue: String){
+    func apiCall(pageValue: String, country: String, category: String){
         apiHelper = APIHandler()
-        apiHelper?.GetNewsForDashboardApiCall(data: "https://newsapi.org/v2/top-headlines?country=in&page=" + pageValue + "&category=" + selectedCategory.lowercased() + "&apiKey=" + APIConstants.accessKey, completion: { [weak self] responseData, errorMessagge in
+        apiHelper?.GetNewsForDashboardApiCall(data: APIConstants.generateURL(country: country, category: category, page: pageValue), completion: { [weak self] responseData, errorMessagge in
             guard let self else {return}
             if errorMessagge == nil {
                 guard let responseData else {return}
@@ -116,7 +126,17 @@ extension SearchTabViewController {
     }
     @objc func refresh() {
         refresher = true
-        apiCall(pageValue: "1")
+        var countryValue: String = ""
+        if let counrty = UserDefaults.standard.string(forKey: "country") {
+            countryValue = counrty
+        }
+        if countryValue != ""  {
+            apiCall(pageValue: "1", country: countryValue, category: selectedCategory)
+
+        } else if countryValue == ""  {
+            apiCall(pageValue: "1", country: "in", category: selectedCategory)
+
+        }
     }
 }
 
@@ -127,7 +147,6 @@ extension SearchTabViewController: UITextFieldDelegate {
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
-        print(newText)
         return true
         
     }

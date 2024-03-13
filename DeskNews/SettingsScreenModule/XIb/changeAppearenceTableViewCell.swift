@@ -25,11 +25,9 @@ class changeAppearenceTableViewCell: UITableViewCell {
         appModeSetter.transform = CGAffineTransformMakeScale(0.90, 0.90);
         if self.traitCollection.userInterfaceStyle == .dark {
             appModeSetter.isOn = true
-            print("Dark Mode")
             // Do something for dark mode
         } else {
             appModeSetter.isOn = false
-            print("Light Mode")
             // Do something for light mode
         }
         // Initialization code
