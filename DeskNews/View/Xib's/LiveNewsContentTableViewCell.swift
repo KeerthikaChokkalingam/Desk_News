@@ -10,6 +10,7 @@ import UIKit
 class LiveNewsContentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var singleNewsListCollections: UICollectionView!
+    @IBOutlet weak var childView: UIView!
     
     var collectionValues = [ArticalSet]()
     
@@ -17,7 +18,11 @@ class LiveNewsContentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setUpUI()
     }
-
+    override func layoutSubviews() {
+        self.contentView.backgroundColor = Thememanager.shared.mainBgColor
+        self.childView.backgroundColor = Thememanager.shared.mainBgColor
+        self.singleNewsListCollections.backgroundColor = Thememanager.shared.mainBgColor
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -47,14 +52,14 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SingleNewsCollectionViewCell", for: indexPath) as? SingleNewsCollectionViewCell else {return UICollectionViewCell()}
-        cell.mainContentView.backgroundColor = colorManager().tabBarTintColor
-        cell.mainContentView.layer.shadowColor = colorManager().mainBgColor.cgColor
+        cell.mainContentView.backgroundColor = Thememanager.shared.tabBarTintColor
+        cell.mainContentView.layer.shadowColor = Thememanager.shared.mainBgColor.cgColor
         cell.mainContentView.layer.shadowOpacity = 0.5
         cell.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 2)
         cell.mainContentView.layer.shadowRadius = 4
-        cell.newsTitleLabel.textColor = colorManager().mainBgColor
-        cell.newsAuthorNameLabel.textColor = colorManager().mainBgColor
-        cell.newsPublishedTimeLabel.textColor = colorManager().mainBgColor
+        cell.newsTitleLabel.textColor = Thememanager.shared.mainBgColor
+        cell.newsAuthorNameLabel.textColor = Thememanager.shared.mainBgColor
+        cell.newsPublishedTimeLabel.textColor = Thememanager.shared.mainBgColor
         if collectionValues.count != 0 {
             cell.loadValues(apiResponse: collectionValues[indexPath.row])
         }

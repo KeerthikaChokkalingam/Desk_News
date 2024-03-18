@@ -13,37 +13,6 @@ class CustomImageView: UIImageView {
     var task: URLSessionDataTask!
     var imageCache = NSCache<AnyObject, AnyObject>()
     
-//    func loadImage(urlString: String, completion: ((String, Int) -> Void)?=nil) {
-//        self.image = nil
-//
-//        if let task = task {
-//            task.cancel()
-//        }
-//        let url = URL(string: urlString)
-//        guard let url else { return }
-//
-//        if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
-//            self.image = imageFromCache
-//            return
-//        }
-//
-//        task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-//            guard let self = self, let data = data, let newImage = UIImage(data: data) else {
-////                print("Cannot load image from url: \(url)")
-//                completion!("failure", 1)
-//                return
-//            }
-//
-//            imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
-//
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self else { return }
-//                self.image = newImage
-//                completion!("success", 0)
-//            }
-//        }
-//        task.resume()
-//    }
     func loadImage(urlString: String, completion: ((String, Int) -> Void)? = nil) {
         self.image = nil
         
@@ -80,6 +49,6 @@ class CustomImageView: UIImageView {
         }
         task?.resume()
     }
-
+    
     
 }

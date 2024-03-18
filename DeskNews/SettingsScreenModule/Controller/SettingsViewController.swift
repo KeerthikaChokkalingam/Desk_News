@@ -11,6 +11,9 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var seperatorView: UIView!
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var settingsTableView: UITableView!
     
     var settingsModelClass: SettingsModel?
@@ -27,17 +30,19 @@ class SettingsViewController: UIViewController {
         self.view.addGestureRecognizer(dismissDropDown)
         setUpTableView()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        setUpColors()
+    }
     @objc func dismissDropDown(_ sender: UIGestureRecognizer){
         guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {
-               return
-           }
-           
-           // Check if a custom view with the specified tag already exists
-           if let existingCustomView = window.viewWithTag(12345) {
-               existingCustomView.removeFromSuperview()
-               return
-           }
+            return
+        }
+        
+        // Check if a custom view with the specified tag already exists
+        if let existingCustomView = window.viewWithTag(12345) {
+            existingCustomView.removeFromSuperview()
+            return
+        }
     }
     
     
@@ -74,6 +79,15 @@ extension SettingsViewController {
         if let tabBarController = self.tabBarController {
             tabBarController.selectedIndex = 0
         }
+    }
+    func setUpColors() {
+        Thememanager.shared.switchTheme()
+        self.titleLabel.textColor = Thememanager.shared.tabBarTintColor
+        self.titleView.backgroundColor = Thememanager.shared.mainBgColor
+        self.view.backgroundColor = Thememanager.shared.mainBgColor
+        self.settingsTableView.backgroundColor = Thememanager.shared.mainBgColor
+        self.seperatorView.backgroundColor =  Thememanager.shared.tabBarTintColor
+        self.settingsTableView.reloadData()
     }
 }
 
@@ -147,6 +161,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 extension SettingsViewController: SettingsScreenDelegate {
     func didSelectThemeSwitch() {
         Thememanager.shared.switchTheme()
+        
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 0
+        }
     }
 }
 
@@ -157,9 +175,9 @@ extension SettingsViewController: CustomDropdownDelegate {
             isCategorySelected = true
             isCountrySelected = false
             let customView = AlertView(frame: CGRect(x: self.view.frame.midX - 175, y: self.view.frame.midY - 65, width: 350, height: 130))
-            customView.backgroundColor = colorManager().mainBgColor
+            customView.backgroundColor = Thememanager.shared.mainBgColor
             customView.layer.borderWidth = 1
-            customView.layer.borderColor = colorManager().tabBarTintColor.cgColor
+            customView.layer.borderColor = Thememanager.shared.tabBarTintColor.cgColor
             customView.tag = 777777
             customView.fromCtegory = true
             customView.layer.cornerRadius = 15
@@ -174,22 +192,22 @@ extension SettingsViewController: CustomDropdownDelegate {
             isCategorySelected = false
             isCountrySelected = true
             let customView = AlertView(frame: CGRect(x: self.view.frame.midX - 175, y: self.view.frame.midY - 65, width: 350, height: 130))
-            customView.backgroundColor = colorManager().mainBgColor
+            customView.backgroundColor = Thememanager.shared.mainBgColor
             customView.tag = 777777
             customView.fromCtegory = false
             customView.layer.borderWidth = 1
-            customView.layer.borderColor = colorManager().tabBarTintColor.cgColor
+            customView.layer.borderColor = Thememanager.shared.tabBarTintColor.cgColor
             customView.layer.cornerRadius = 15
             customView.reloadView()
             customView.cancelBtn.addTarget(self, action: #selector(cancelBtnAction), for: .touchUpInside)
             customView.okBtn.addTarget(self, action: #selector(changeCountry(_:)), for: .touchUpInside)
             self.view.addSubview(customView)
             UserDefaults.standard.set(getCountryCode(countryName: option), forKey: "country")
-
+            
             
         }
         settingsTableView.reloadData()
     }
-   
+    
 }
 

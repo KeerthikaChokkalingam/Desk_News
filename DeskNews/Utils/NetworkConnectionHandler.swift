@@ -15,7 +15,7 @@ class NetworkConnectionHandler {
         var flags = SCNetworkReachabilityFlags()
         SCNetworkReachabilityGetFlags(self.mReachability!, &flags)
         if isNetworkReachable(with: flags) {
-//            print("flags:\(flags)")
+            //            print("flags:\(flags)")
             return true
         } else {
             return false

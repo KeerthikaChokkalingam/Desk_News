@@ -9,6 +9,8 @@ import UIKit
 
 class SearchTabViewController: UIViewController {
     
+    @IBOutlet weak var seperatorView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var scrollBgColor: UIView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var searchView: UIView!
@@ -40,11 +42,14 @@ class SearchTabViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setUpSearchTextField()
-        setUpDynamicLabel()
     }
     override func viewWillAppear(_ animated: Bool) {
+        selectedLabel = nil
+        setUpDynamicLabel()
+        setUpUiColor()
         apiCall()
     }
+    
     deinit {
         viewModel = nil
         apiHelper = nil
@@ -64,10 +69,10 @@ extension SearchTabViewController {
             }
             if countryValue != ""  {
                 apiCall(pageValue: "1", country: countryValue, category: selectedCategory)
-
+                
             } else if countryValue == ""  {
                 apiCall(pageValue: "1", country: "in", category: selectedCategory)
-
+                
             }
         } else {
             internetFailure(childTableView: searchListTableView)
@@ -81,18 +86,24 @@ extension SearchTabViewController {
         lineView.layer.cornerRadius = 2
         highLightedView.layer.cornerRadius = 2
         categoryCollectionView.delegate = self
-        self.view.backgroundColor = colorManager().mainBgColor
-        self.tableBgView.backgroundColor = colorManager().mainBgColor
-        self.searchView.backgroundColor = colorManager().mainBgColor
-        self.titleView.backgroundColor = colorManager().mainBgColor
-        self.lineView.backgroundColor = colorManager().mainBgColor
         
-
+    }
+    func setUpUiColor() {
+        Thememanager.shared.switchTheme()
+        self.view.backgroundColor = Thememanager.shared.mainBgColor
+        self.tableBgView.backgroundColor = Thememanager.shared.mainBgColor
+        self.searchView.backgroundColor = Thememanager.shared.mainBgColor
+        self.titleView.backgroundColor = Thememanager.shared.mainBgColor
+        self.lineView.backgroundColor = Thememanager.shared.tabBarTintColor
+        self.titleLbl.textColor = Thememanager.shared.tabBarTintColor
+        self.seperatorView.backgroundColor =  Thememanager.shared.tabBarTintColor
+        self.highLightedView.backgroundColor = Thememanager.shared.tabBarTintColor
     }
     func setUpSearchTextField() {
         searchTextField.delegate = self
         searchTextField.layer.cornerRadius = 20
         searchTextField.placeholder = "Search"
+        searchTextField.setPlaceholderTextColor(UIColor.separator) // Set your desired color
         searchTextField.leftViewMode = .always
         let searchView = UIView(frame: CGRect(x: 15, y: 15, width: 60, height: 30))
         let searchImageView = UIImageView(frame: CGRect(x: 15, y: 4, width: 25, height: 22))
@@ -132,10 +143,10 @@ extension SearchTabViewController {
         }
         if countryValue != ""  {
             apiCall(pageValue: "1", country: countryValue, category: selectedCategory)
-
+            
         } else if countryValue == ""  {
             apiCall(pageValue: "1", country: "in", category: selectedCategory)
-
+            
         }
     }
 }
@@ -157,5 +168,11 @@ extension SearchTabViewController: UITextFieldDelegate {
         DispatchQueue.main.async {
             self.searchListTableView.reloadData()
         }
+    }
+}
+extension UITextField {
+    func setPlaceholderTextColor(_ color: UIColor) {
+        guard let placeholder = self.placeholder else { return }
+        self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: color])
     }
 }

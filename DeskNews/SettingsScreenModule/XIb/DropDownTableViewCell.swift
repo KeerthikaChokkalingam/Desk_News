@@ -36,7 +36,15 @@ class DropDownTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+    override func layoutSubviews() {
+        Thememanager.shared.switchTheme()
+        self.contentView.backgroundColor = Thememanager.shared.mainBgColor
+        self.bgView.backgroundColor = Thememanager.shared.tabBarTintColor
+        self.titleLabel.textColor = Thememanager.shared.mainBgColor
+        self.selectionView.backgroundColor = Thememanager.shared.mainBgColor
+        self.selectedValue.textColor = Thememanager.shared.tabBarTintColor
+        self.dropDownButton.tintColor = Thememanager.shared.tabBarTintColor
+    }
     @objc private func handleDropdownTap() {
         
         guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {

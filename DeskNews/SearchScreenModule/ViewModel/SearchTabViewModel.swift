@@ -31,7 +31,7 @@ class SearchTabViewModel: NSObject {
             filterVlaue = originalValue
         }
         filteredValue = filterVlaue
-
+        
         return true
     }
     func setButtonTextColor(fromImage image: UIImage) -> UIColor  {
@@ -52,7 +52,7 @@ class SearchTabViewModel: NSObject {
             let averageColor = renderedImage?.averageColor ?? .white
             
             // Choose the text color based on the processed color
-             textColor = averageColor.isLight ? .black : .white
+            textColor = averageColor.isLight ? .black : .white
         }
         return textColor
     }
@@ -85,12 +85,12 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsFeedTableViewCell", for: indexPath) as? NewsFeedTableViewCell else {return UITableViewCell()}
-        cell.bgView.backgroundColor = colorManager().tabBarTintColor
-        cell.chanelNameLabel.textColor = colorManager().mainBgColor
-        cell.dateTimeLabel.textColor = colorManager().mainBgColor
-        cell.authorLabel.textColor = colorManager().mainBgColor
-        cell.titleLabel.textColor = colorManager().mainBgColor
-              
+        cell.bgView.backgroundColor = Thememanager.shared.tabBarTintColor
+        cell.chanelNameLabel.textColor = Thememanager.shared.mainBgColor
+        cell.dateTimeLabel.textColor = Thememanager.shared.mainBgColor
+        cell.authorLabel.textColor = Thememanager.shared.mainBgColor
+        cell.titleLabel.textColor = Thememanager.shared.mainBgColor
+        
         if (searchNewsResponse.count) > 0 {
             let currentData = searchNewsResponse[indexPath.row]
             cell.applyServerResult(values: currentData)
@@ -116,11 +116,11 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                     if countryValue != "" {
                         apiCall(pageValue: String(pageCount), country: countryValue, category: selectedCategory)
-
+                        
                     } else if countryValue == "" {
                         apiCall(pageValue: String(pageCount), country: "in", category: selectedCategory)
-
-                    } 
+                        
+                    }
                 } else {
                     tableView.tableFooterView = nil
                 }
@@ -143,9 +143,11 @@ extension SearchTabViewController {
             label.frame = CGRect(x: labelStartingPoint, y: 0, width: labelSize.width, height: 45)
             label.text = item
             label.font = UIFont(name: "Helvetica Nueue", size: 15)
-            if item == "General" {
+            if item == selectedCategory {
                 highLightedViewWidth.constant = labelSize.width
                 selectedLabel = label
+                Thememanager.shared.switchTheme()
+                label.textColor = Thememanager.shared.tabBarTintColor
             } else {
                 label.textColor = .gray
             }
@@ -187,18 +189,13 @@ extension SearchTabViewController {
                 }
                 if countryValue != "" {
                     apiCall(pageValue: "1", country: countryValue, category: selectedCategory)
-
+                    
                 } else if countryValue == ""  {
                     apiCall(pageValue: "1", country: "in", category: selectedCategory)
-
+                    
                 }
-                
-                if self.traitCollection.userInterfaceStyle == .dark {
-                    tappedLabel.textColor = .white
-                } else {
-                    tappedLabel.textColor = .black
-                }
-                tappedLabel.textColor = highLightedView.backgroundColor
+                Thememanager.shared.switchTheme()
+                tappedLabel.textColor = Thememanager.shared.tabBarTintColor
                 highLightedViewWidth.constant = tappedLabel.frame.width
                 highLightedViewLeadingAnchor.constant = tappedLabel.frame.origin.x
                 selectedLabel = tappedLabel
@@ -219,30 +216,30 @@ extension CGImage {
     var averageColor: UIColor {
         guard let pixelData = dataProvider?.data else { return .clear }
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-
+        
         var totalRed = 0
         var totalGreen = 0
         var totalBlue = 0
-
+        
         for x in 0..<width {
             for y in 0..<height {
                 let pixelInfo: Int = ((Int(width) * Int(y)) + Int(x)) * 4
-
+                
                 let red = CGFloat(data[pixelInfo])
                 let green = CGFloat(data[pixelInfo + 1])
                 let blue = CGFloat(data[pixelInfo + 2])
-
+                
                 totalRed += Int(red)
                 totalGreen += Int(green)
                 totalBlue += Int(blue)
             }
         }
-
+        
         let count = width * height
         let red = CGFloat(totalRed) / CGFloat(count)
         let green = CGFloat(totalGreen) / CGFloat(count)
         let blue = CGFloat(totalBlue) / CGFloat(count)
-
+        
         return UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1.0)
     }
 }

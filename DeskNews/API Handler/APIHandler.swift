@@ -25,11 +25,11 @@ class APIHandler {
                             self.aPIResponseModel = responseData
                             completion(responseData, nil)
                         } catch {
-//                            print("Decode error: \(error)")
+                            //                            print("Decode error: \(error)")
                             completion(nil, error.localizedDescription)
                         }
                     } else {
-//                        print("Data is nil.")
+                        //                        print("Data is nil.")
                         guard let error else {return}
                         completion(nil, error.localizedDescription)
                     }

@@ -15,7 +15,7 @@ class AlertView: UIView {
         //lbl.text = "MULTI  SQUARE  OFF"
         lbl.text = ""
         lbl.textAlignment = .center
-        lbl.textColor = colorManager().tabBarTintColor
+        lbl.textColor = Thememanager.shared.tabBarTintColor
         lbl.font = UIFont.systemFont(ofSize: 12)
         lbl.numberOfLines = 0
         return lbl
@@ -26,9 +26,9 @@ class AlertView: UIView {
         let btn = UIButton()
         //lbl.text = "MULTI  SQUARE  OFF"
         btn.setTitle("OK", for: .normal)
-        btn.backgroundColor = colorManager().tabBarTintColor
+        btn.backgroundColor = Thememanager.shared.tabBarTintColor
         btn.layer.cornerRadius = 10
-        btn.setTitleColor(colorManager().mainBgColor, for: .normal)
+        btn.setTitleColor(Thememanager.shared.mainBgColor, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         return btn
         
@@ -38,9 +38,9 @@ class AlertView: UIView {
         let btn = UIButton()
         //lbl.text = "MULTI  SQUARE  OFF"
         btn.setTitle("CANCEL", for: .normal)
-        btn.backgroundColor = colorManager().tabBarTintColor
+        btn.backgroundColor = Thememanager.shared.tabBarTintColor
         btn.layer.cornerRadius = 10
-        btn.setTitleColor(colorManager().mainBgColor, for: .normal)
+        btn.setTitleColor(Thememanager.shared.mainBgColor, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         return btn
         

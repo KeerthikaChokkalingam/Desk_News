@@ -34,7 +34,6 @@
 		376EE2132A94B4AA000611A9 /* DeskNewsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE2122A94B4AA000611A9 /* DeskNewsUITestsLaunchTests.swift */; };
 		377917202B11DF030020C874 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779171F2B11DF030020C874 /* SettingsModel.swift */; };
 		377917222B11DF230020C874 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377917212B11DF230020C874 /* SettingsViewController.swift */; };
-		377917242B11DF370020C874 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377917232B11DF370020C874 /* SettingsViewModel.swift */; };
 		3787E9312A95F94100592C93 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787E9302A95F94100592C93 /* APIConstants.swift */; };
 		3787E9332A95F96400592C93 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787E9322A95F96400592C93 /* DashboardViewModel.swift */; };
 		3787E9352A95F98500592C93 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787E9342A95F98500592C93 /* DashboardModel.swift */; };
@@ -102,7 +101,6 @@
 		376EE2122A94B4AA000611A9 /* DeskNewsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskNewsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3779171F2B11DF030020C874 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		377917212B11DF230020C874 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		377917232B11DF370020C874 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3787E9302A95F94100592C93 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		3787E9322A95F96400592C93 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		3787E9342A95F98500592C93 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 				7F00A20C2B188833000C68AD /* XIb */,
 				3779171C2B11DE770020C874 /* Model */,
 				3779171E2B11DE8C0020C874 /* Controller */,
-				3779171D2B11DE7F0020C874 /* View Model */,
 			);
 			path = SettingsScreenModule;
 			sourceTree = "<group>";
@@ -317,14 +314,6 @@
 				3779171F2B11DF030020C874 /* SettingsModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		3779171D2B11DE7F0020C874 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				377917232B11DF370020C874 /* SettingsViewModel.swift */,
-			);
-			path = "View Model";
 			sourceTree = "<group>";
 		};
 		3779171E2B11DE8C0020C874 /* Controller */ = {
@@ -564,7 +553,6 @@
 				3787E93D2A96065E00592C93 /* NewsOfTheDayFeedTableViewCell.swift in Sources */,
 				37F76A662AB1F97400765604 /* SelectedNewsViewController.swift in Sources */,
 				3715DA8B2A98C6A0008AFD0F /* NetworkConnectionHandler.swift in Sources */,
-				377917242B11DF370020C874 /* SettingsViewModel.swift in Sources */,
 				37B6A6552A94C025007314F7 /* AppConstant.swift in Sources */,
 				3731BFD22AA0923F0072FEDF /* SearchTabViewController.swift in Sources */,
 				373093712AB1F0D90047C573 /* NewsFeedTableViewCell.swift in Sources */,

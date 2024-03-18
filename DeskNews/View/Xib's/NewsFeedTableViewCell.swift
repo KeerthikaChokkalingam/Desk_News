@@ -8,7 +8,7 @@
 import UIKit
 
 class NewsFeedTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var noPreViewButton: UIButton!
     @IBOutlet weak var newsImageView: CustomImageView!
     @IBOutlet weak var chanelNameLabel: UILabel!
@@ -31,10 +31,19 @@ class NewsFeedTableViewCell: UITableViewCell {
         bgView.layer.shadowRadius = 4.0
         bgView.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8.0).cgPath
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    override func layoutSubviews() {
+        self.contentView.backgroundColor = Thememanager.shared.mainBgColor
+        bgView.backgroundColor = Thememanager.shared.tabBarTintColor
+        chanelNameLabel.textColor = Thememanager.shared.mainBgColor
+        dateTimeLabel.textColor = Thememanager.shared.mainBgColor
+        authorLabel.textColor = Thememanager.shared.mainBgColor
+        titleLabel.textColor = Thememanager.shared.mainBgColor
+    }
+    
     func applyServerResult(values: ArticalSet) {
         chanelNameLabel.text = values.source?.name
         authorLabel.text = values.author

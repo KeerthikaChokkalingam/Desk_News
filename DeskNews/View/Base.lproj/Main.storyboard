@@ -18,6 +18,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CQU-4i-uXv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="m5y-yC-vTL" kind="relationship" relationship="viewControllers" id="j2P-hT-xvZ"/>
@@ -50,12 +51,12 @@
                                             <constraint firstAttribute="height" constant="30" id="TdZ-Yo-YdS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hk-3p-jGj">
                                         <rect key="frame" x="0.0" y="709" width="393" height="1"/>
-                                        <color key="backgroundColor" red="0.0" green="0.23137254900000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.23137254901960785" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="aKH-8C-Ibj"/>
                                         </constraints>
@@ -88,6 +89,7 @@
                     <navigationItem key="navigationItem" id="y7x-jM-o3z"/>
                     <connections>
                         <outlet property="liveNewsList" destination="6Rl-fw-aEF" id="VkH-xA-fK0"/>
+                        <outlet property="seperatorView" destination="1hk-3p-jGj" id="NMR-3C-lFA"/>
                         <outlet property="tableViewBgView" destination="HDt-Oy-Ezf" id="2Ef-Q0-ENW"/>
                         <outlet property="titleLbl" destination="wK6-s3-bvq" id="UyE-EO-Bov"/>
                     </connections>
@@ -196,6 +198,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="EhN-kL-Foa" id="oEw-ZR-cOk"/>
                         <outlet property="newsWebView" destination="d7Q-7Q-XT8" id="LPI-XU-EQt"/>
                     </connections>
                 </viewController>
@@ -363,12 +366,16 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="7WL-Sw-gcd" id="Oaz-2J-5Cf"/>
+                        <outlet property="bgView" destination="Wd8-Av-nw3" id="y0E-HQ-nt2"/>
                         <outlet property="chanelName" destination="sgx-7i-Tha" id="ZUw-fA-ohU"/>
                         <outlet property="dateLabel" destination="7sf-L5-zUw" id="v0v-Gc-vRx"/>
+                        <outlet property="innerView" destination="myk-2r-a9p" id="QwA-gi-oL7"/>
+                        <outlet property="learnMoreBtn" destination="z65-Vq-MWN" id="d9d-mn-ZQR"/>
                         <outlet property="newDescriptionLabel" destination="fYi-ug-rAm" id="rfz-gb-ttR"/>
                         <outlet property="newFeedImageView" destination="3Lv-wk-A8x" id="Dnd-q5-K52"/>
                         <outlet property="newsTitle" destination="czL-IQ-Tzy" id="r8B-LV-W26"/>
                         <outlet property="noPreviewImageButton" destination="FMd-Td-tHA" id="DXr-JA-WYg"/>
+                        <outlet property="scrollContent" destination="XmP-BG-u7b" id="8vJ-0A-JtI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uM-75-Hda" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -539,7 +546,9 @@
                         <outlet property="searchListTableView" destination="EUb-jk-s8o" id="IRY-J4-MoR"/>
                         <outlet property="searchTextField" destination="qat-Rz-qti" id="6Vj-5r-dgq"/>
                         <outlet property="searchView" destination="b4W-Cl-FsU" id="tHC-wD-RRz"/>
+                        <outlet property="seperatorView" destination="ekR-yP-U6q" id="wGU-zq-pbM"/>
                         <outlet property="tableBgView" destination="9En-az-6PU" id="1E0-yz-x1O"/>
+                        <outlet property="titleLbl" destination="JKQ-lu-xaJ" id="bSf-4u-nMz"/>
                         <outlet property="titleView" destination="XsL-7G-Hxy" id="EDz-QZ-RnV"/>
                     </connections>
                 </viewController>
@@ -624,7 +633,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="lae-My-S70"/>
                     <connections>
+                        <outlet property="seperatorView" destination="4n8-8Y-6dE" id="xUU-1t-6EV"/>
                         <outlet property="settingsTableView" destination="SkU-Gx-0Kf" id="OtP-LT-nX9"/>
+                        <outlet property="titleLabel" destination="1YK-yQ-8Gr" id="cht-N9-old"/>
+                        <outlet property="titleView" destination="S1h-O3-YQ4" id="Hqp-V1-eaB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAR-Y3-iHP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -7,34 +7,41 @@
 
 import UIKit
 
+enum Theme {
+    case light
+    case dark
+}
+
 class Thememanager: NSObject {
     static let shared = Thememanager()
     private override init() {}
     
     var currentTheme: Theme = .light
     
-    enum Theme {
-        case light
-        case dark
-    }
     
     func switchTheme() {
-        currentTheme = (currentTheme == .light) ? .dark : .light
+        if let retrievedString = UserDefaults.standard.string(forKey: "appMode") {
+            if retrievedString == "LightMode" {
+                currentTheme = .light
+            } else {
+                currentTheme = .dark
+            }
+        } else {
+            currentTheme = .light
+        }
     }
-}
-
-class colorManager: NSObject {
-    let appMode = Utils().getAppMode()
+    
     var mainBgColor: UIColor {
         get {
-            let bgColor = appMode == 1 ? UIColor().hexStringToUIColor(hex: "#C8FFE0") : UIColor().hexStringToUIColor(hex: "#C8FFE0")
+            let bgColor = currentTheme == .light ? UIColor().hexStringToUIColor(hex: "#C8FFE0") : UIColor().hexStringToUIColor(hex: "#003B4A")
             return bgColor
         }
     }
     var tabBarTintColor: UIColor {
         get {
-            let bgColor = appMode == 1 ? UIColor().hexStringToUIColor(hex: "#003B4A") : UIColor().hexStringToUIColor(hex: "#003B4A")
+            let bgColor = currentTheme == .light ? UIColor().hexStringToUIColor(hex: "#003B4A") : UIColor().hexStringToUIColor(hex: "#C8FFE0")
             return bgColor
         }
     }
 }
+

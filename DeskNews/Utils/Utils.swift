@@ -83,37 +83,24 @@ class Utils {
         sender.tableFooterView = spinner
         sender.tableFooterView?.isHidden = false
     }
-    func getAppMode() -> Int {
-        // 0- dark mode, 1- light mode
-        if let retrievedString = UserDefaults.standard.string(forKey: "appMode") {
-            if retrievedString == "LightMode" {
-                return 1
-            } else {
-                return 0
-            }
-        } else {
-            // if this key is nil by default app mode is light
-            return 1
-        }
-    }
 }
 
 func addGradientToView(view: UIView) {
     let gradientLayer = CAGradientLayer()
     gradientLayer.frame = view.bounds
-
+    
     // Define the colors for your gradient
     let color1 = (UIColor().hexStringToUIColor(hex: "#003b4a")).cgColor
     let color2 = (UIColor().hexStringToUIColor(hex: "C8FFE0")).cgColor
     gradientLayer.colors = [color2, color1]
-
+    
     // Define the start and end points of the gradient
     gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
     gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-
+    
     // You can adjust the locations of the colors if needed
     gradientLayer.locations = [0.0, 1.0]
-
+    
     view.layer.insertSublayer(gradientLayer, at: 0)
 }
 func getCountryCode(countryName: String) -> String {

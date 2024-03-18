@@ -31,7 +31,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.7843137255" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25880352140000001" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FLH-yI-hsf" firstAttribute="top" secondItem="reG-lG-tJi" secondAttribute="top" id="GWo-BE-zMX"/>
                             <constraint firstAttribute="trailing" secondItem="FLH-yI-hsf" secondAttribute="trailing" id="Hpg-vh-CTQ"/>
@@ -50,6 +50,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="childView" destination="reG-lG-tJi" id="soM-sS-rTP"/>
                 <outlet property="singleNewsListCollections" destination="FLH-yI-hsf" id="Re5-s0-V16"/>
             </connections>
             <point key="canvasLocation" x="-135.87786259541986" y="61.619718309859159"/>

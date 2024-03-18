@@ -12,6 +12,7 @@ class HomeDashboardViewController: UIViewController {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var tableViewBgView: UIView!
     @IBOutlet weak var liveNewsList: UITableView!
+    @IBOutlet weak var seperatorView: UIView!
     
     var viewModel: DashboardViewModel?
     var responseNews: HeadLinesResponse?
@@ -26,8 +27,10 @@ class HomeDashboardViewController: UIViewController {
         setUpUI()
     }
     override func viewWillAppear(_ animated: Bool) {
+        setUpColors()
         getNewsApiCall()
     }
+    
     deinit {
         viewModel = nil
         apiHelper = nil
@@ -45,10 +48,14 @@ extension HomeDashboardViewController {
         let refresher = Utils().addRefreshController(sender: liveNewsList)
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        self.view.backgroundColor = colorManager().mainBgColor
-        self.liveNewsList.backgroundColor = colorManager().mainBgColor
-        self.tableViewBgView.backgroundColor = colorManager().mainBgColor
-        self.titleLbl.textColor = colorManager().tabBarTintColor
+    }
+    func setUpColors() {
+        Thememanager.shared.switchTheme()
+        self.view.backgroundColor = Thememanager.shared.mainBgColor
+        self.liveNewsList.backgroundColor = Thememanager.shared.mainBgColor
+        self.tableViewBgView.backgroundColor = Thememanager.shared.mainBgColor
+        self.titleLbl.textColor = Thememanager.shared.tabBarTintColor
+        self.seperatorView.backgroundColor = Thememanager.shared.tabBarTintColor
     }
     func apiCall(country: String, category: String){
         apiHelper = APIHandler()
@@ -89,10 +96,10 @@ extension HomeDashboardViewController {
             }
             if categoryValue != "" && countryValue != "" {
                 apiCall(country: countryValue, category: categoryValue)
-
+                
             } else if countryValue == "" && categoryValue != "" {
                 apiCall(country: "in", category: categoryValue)
-
+                
             } else if countryValue == "" && categoryValue != "" {
                 apiCall(country: countryValue, category: "general")
             } else {

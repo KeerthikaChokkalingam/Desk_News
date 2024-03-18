@@ -11,6 +11,7 @@ import WebKit
 class NewsWebViewController: UIViewController {
     
     @IBOutlet weak var newsWebView: WKWebView!
+    @IBOutlet weak var backBtn: UIButton!
     
     var pageUrl: String = ""
     
@@ -19,6 +20,8 @@ class NewsWebViewController: UIViewController {
         loadPage()
     }
     override func viewWillAppear(_ animated: Bool) {
+        Thememanager.shared.switchTheme()
+        backBtn.tintColor = Thememanager.shared.tabBarTintColor
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }

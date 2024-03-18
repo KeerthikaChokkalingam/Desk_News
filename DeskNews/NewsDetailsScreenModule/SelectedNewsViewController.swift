@@ -9,6 +9,10 @@ import UIKit
 
 class SelectedNewsViewController: UIViewController {
     
+    @IBOutlet weak var learnMoreBtn: UIButton!
+    @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var scrollContent: UIScrollView!
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var noPreviewImageButton: UIButton!
     @IBOutlet weak var chanelName: UILabel!
@@ -41,6 +45,21 @@ class SelectedNewsViewController: UIViewController {
 
 extension SelectedNewsViewController {
     func setUpUI() {
+        Thememanager.shared.switchTheme()
+        self.view.backgroundColor = Thememanager.shared.mainBgColor
+        self.bgView.backgroundColor = Thememanager.shared.mainBgColor
+        self.scrollContent.backgroundColor = Thememanager.shared.mainBgColor
+        self.innerView.backgroundColor = Thememanager.shared.mainBgColor
+        self.chanelName.textColor = Thememanager.shared.tabBarTintColor
+        self.dateLabel.textColor = Thememanager.shared.tabBarTintColor
+        self.newsTitle.textColor = Thememanager.shared.tabBarTintColor
+        self.newDescriptionLabel.textColor = Thememanager.shared.tabBarTintColor
+        self.learnMoreBtn.setTitleColor(Thememanager.shared.tabBarTintColor, for: .normal)
+        self.learnMoreBtn.tintColor = Thememanager.shared.tabBarTintColor
+        self.learnMoreBtn.setTitle("Learn More", for: .normal)
+        self.learnMoreBtn.setImage(UIImage(systemName: "arrow.right"), for: .normal)
+        self.backButton.tintColor = Thememanager.shared.tabBarTintColor
+        
         newFeedImageView.layer.cornerRadius = 15
         noPreviewImageButton.layer.cornerRadius = 15
         if selectedNewsData.urlToImage != nil && selectedNewsData.urlToImage != "" {

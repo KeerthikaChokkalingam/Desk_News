@@ -23,7 +23,9 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
         selectionStyle = .none
         super.awakeFromNib()
     }
-
+    override func layoutSubviews() {
+        self.contentView.backgroundColor = Thememanager.shared.mainBgColor
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

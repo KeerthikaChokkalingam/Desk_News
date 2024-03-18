@@ -56,6 +56,7 @@
             <connections>
                 <outlet property="appModeSetter" destination="ee3-fu-Vce" id="nV0-Ix-83a"/>
                 <outlet property="bgView" destination="ON9-dF-5gQ" id="9ai-ui-Aax"/>
+                <outlet property="lbl" destination="boo-di-9KJ" id="MOG-3l-ZWb"/>
             </connections>
             <point key="canvasLocation" x="155.72519083969465" y="19.718309859154932"/>
         </tableViewCell>

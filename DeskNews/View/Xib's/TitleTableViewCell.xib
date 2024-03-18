@@ -44,6 +44,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="childView" destination="qoc-ue-X7N" id="vfs-hU-xRf"/>
                 <outlet property="liveNewsLabel" destination="4Hh-yE-tJX" id="Aq6-eB-bw9"/>
             </connections>
             <point key="canvasLocation" x="-95" y="20"/>
