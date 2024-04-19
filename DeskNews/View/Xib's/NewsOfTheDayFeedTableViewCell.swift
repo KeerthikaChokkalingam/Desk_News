@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Lottie
+import SwiftUI
 
 class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     
@@ -61,7 +63,19 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
             contentImageView.loadImage(urlString: apiResponse.urlToImage ?? "")
         } else {
             contentImageView.isHidden = true
-            addGradientToView(view: backGroundView)
+            var animationView: LottieAnimationView?
+            animationView = .init(name: "no_data.json")
+            animationView!.frame = self.backGroundView.bounds
+            animationView!.contentMode = .scaleAspectFill
+            animationView!.loopMode = .loop
+            animationView!.animationSpeed = 0.5
+            animationView!.layer.cornerRadius = 15
+            self.backGroundView.backgroundColor = UIColor().hexStringToUIColor(hex: "#FFFFFF")
+            self.backGroundView.addSubview(animationView!)
+            self.backGroundView.bringSubviewToFront(self.learnMoreButton)
+            self.backGroundView.bringSubviewToFront(self.contentLabelContentView)
+            self.backGroundView.bringSubviewToFront(self.newsDayView)
+            animationView!.play()
         }
     }
     @objc func goToNewsWebTab(_ sender: UIButton) {

@@ -6,7 +6,7 @@ target 'DeskNews' do
   use_frameworks!
 
   # Pods for DeskNews
-pod 'SkeletonView'
+pod 'lottie-ios'
   target 'DeskNewsTests' do
     inherit! :search_paths
     # Pods for testing

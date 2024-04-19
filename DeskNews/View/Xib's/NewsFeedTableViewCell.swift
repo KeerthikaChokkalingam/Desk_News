@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Lottie
+import SwiftUI
 
 class NewsFeedTableViewCell: UITableViewCell {
     
@@ -16,6 +18,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bgView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         noPreViewButton.isHidden = true
@@ -35,6 +38,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     override func layoutSubviews() {
         self.contentView.backgroundColor = Thememanager.shared.mainBgColor
         bgView.backgroundColor = Thememanager.shared.tabBarTintColor
@@ -52,9 +56,20 @@ class NewsFeedTableViewCell: UITableViewCell {
             noPreViewButton.isHidden = true
             newsImageView.isHidden = false
             newsImageView.loadImage(urlString: values.urlToImage ?? "")
+            newsImageView.contentMode = .scaleAspectFill
         } else {
             newsImageView.isHidden = true
             noPreViewButton.isHidden = false
+            var animationView: LottieAnimationView?
+            animationView = .init(name: "no_data.json")
+            animationView!.frame = self.noPreViewButton.bounds
+            animationView!.contentMode = .scaleAspectFill
+            animationView!.loopMode = .loop
+            animationView!.animationSpeed = 0.5
+            animationView!.layer.cornerRadius = 15
+            self.noPreViewButton.backgroundColor = UIColor().hexStringToUIColor(hex: "#FFFFFF")
+            self.noPreViewButton.addSubview(animationView!)
+            animationView!.play()
         }
         let dateString = Utils().dateFromISO8601String(values.publishedAt ?? "")
         let startDate = dateString ?? Date()
@@ -68,5 +83,4 @@ class NewsFeedTableViewCell: UITableViewCell {
             dateTimeLabel.text = timeAgoString
         }
     }
-    
 }

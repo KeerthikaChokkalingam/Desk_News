@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class SingleNewsCollectionViewCell: UICollectionViewCell {
     
@@ -35,6 +36,27 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
         } else {
             newsImageView.isHidden = true
             previewButton.isHidden = false
+            
+            var animationView: LottieAnimationView?
+            animationView = .init(name: "no_data.json")
+            
+            if let animView = self.previewButton.viewWithTag(30) {
+                let animationViewSize = CGSize(width: self.previewButton.bounds.width - 50, height: self.previewButton.bounds.height)
+                animationView!.frame = CGRect(x: -10, y: 10, width: animationViewSize.width, height: animationViewSize.height)
+                animView.removeFromSuperview()
+                animationView!.frame = self.previewButton.bounds
+            } else {
+                let animationViewSize = CGSize(width: self.previewButton.bounds.width - 50, height: self.previewButton.bounds.height)
+                animationView!.frame = CGRect(x: -10, y: 10, width: animationViewSize.width, height: animationViewSize.height)
+            }
+            animationView!.contentMode = .scaleAspectFit
+            animationView!.loopMode = .loop
+            animationView!.animationSpeed = 0.5
+            animationView!.tag = 30;
+            animationView!.layer.cornerRadius = 15
+            self.previewButton.backgroundColor = UIColor().hexStringToUIColor(hex: "#FFFFFF")
+            self.previewButton.addSubview(animationView!)
+            animationView!.play()
         }
         newsAuthorNameLabel.text = apiResponse.author
         if apiResponse.author == "" || apiResponse.author == nil {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class SelectedNewsViewController: UIViewController {
     
@@ -73,6 +74,16 @@ extension SelectedNewsViewController {
         } else {
             newFeedImageView.isHidden = true
             noPreviewImageButton.isHidden = false
+            var animationView: LottieAnimationView?
+            animationView = .init(name: "no_data.json")
+            animationView!.frame = self.noPreviewImageButton.bounds
+            animationView!.contentMode = .scaleAspectFill
+            animationView!.loopMode = .loop
+            animationView!.animationSpeed = 0.5
+            animationView!.layer.cornerRadius = 15
+            self.noPreviewImageButton.backgroundColor = UIColor().hexStringToUIColor(hex: "#FFFFFF")
+            self.noPreviewImageButton.addSubview(animationView!)
+            animationView!.play()
         }
         newsTitle.text = selectedNewsData.title
         chanelName.text = selectedNewsData.source?.name
