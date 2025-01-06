@@ -52,10 +52,10 @@ class NewsFeedTableViewCell: UITableViewCell {
         chanelNameLabel.text = values.source?.name
         authorLabel.text = values.author
         titleLabel.text = values.title
-        if values.urlToImage != nil && values.urlToImage != "" {
+        if values.image != nil && values.image != "" {
             noPreViewButton.isHidden = true
             newsImageView.isHidden = false
-            newsImageView.loadImage(urlString: values.urlToImage ?? "")
+            newsImageView.loadImage(urlString: values.image ?? "")
             newsImageView.contentMode = .scaleAspectFill
         } else {
             newsImageView.isHidden = true

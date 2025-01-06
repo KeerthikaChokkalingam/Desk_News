@@ -63,9 +63,9 @@ extension SelectedNewsViewController {
         
         newFeedImageView.layer.cornerRadius = 15
         noPreviewImageButton.layer.cornerRadius = 15
-        if selectedNewsData.urlToImage != nil && selectedNewsData.urlToImage != "" {
+        if selectedNewsData.image != nil && selectedNewsData.image != "" {
             noPreviewImageButton.isHidden = true
-            newFeedImageView.loadImage(urlString: selectedNewsData.urlToImage ?? "") { success, error  in
+            newFeedImageView.loadImage(urlString: selectedNewsData.image ?? "") { success, error  in
                 if success == "success" && error == 0 {
                     self.searchModelBase = SearchTabViewModel()
                     self.backButton.tintColor = self.searchModelBase.setButtonTextColor(fromImage: self.newFeedImageView.image ?? UIImage())

@@ -257,6 +257,36 @@
                   endingLineNumber = "168"
                   offsetFromSymbolStart = "604">
                </Location>
+               <Location
+                  uuid = "B0032A85-EACE-469C-893C-6881BDD39877 - f029c1942bb80cc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeskNews.SearchTabViewController.labelTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "DeskNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/keerthika/Documents/Desk_News/DeskNews/SearchScreenModule/ViewModel/SearchTabViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "B0032A85-EACE-469C-893C-6881BDD39877 - f029c1942bb80cc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeskNews.SearchTabViewController.labelTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "DeskNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/keerthika/Documents/Desk_News/DeskNews/SearchScreenModule/ViewModel/SearchTabViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "604">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -299,6 +329,21 @@
                   moduleName = "DeskNews"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/keerthika/Desktop/Projects/Desk_News/DeskNews/SearchScreenModule/Controller/SearchTabViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "658DBB2C-8DFD-403A-ADAA-A6F77ABFE691 - b468987bb11aa9fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeskNews.SearchTabViewController.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "DeskNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/keerthika/Documents/Desk_News/DeskNews/SearchScreenModule/Controller/SearchTabViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"

@@ -29,13 +29,13 @@ struct ArticalSet: Codable {
     var title: String?
     var description: String?
     var url: String?
-    var urlToImage: String?
+    var image: String?
     var publishedAt: String?
     var content: String?
 }
 
 struct SourceStruct: Codable {
-    var id: String?
+    var url: String?
     var name: String?
 }
 

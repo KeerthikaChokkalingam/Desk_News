@@ -57,10 +57,10 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
         setUpUI()
         newsContentLabel.text = apiResponse.title
         contentImageView.contentMode = .scaleAspectFill
-        if apiResponse.urlToImage != nil && apiResponse.urlToImage != "" {
+        if apiResponse.image != nil && apiResponse.image != "" {
             backGroundView.backgroundColor = .white
             contentImageView.isHidden = false
-            contentImageView.loadImage(urlString: apiResponse.urlToImage ?? "")
+            contentImageView.loadImage(urlString: apiResponse.image ?? "")
         } else {
             contentImageView.isHidden = true
             var animationView: LottieAnimationView?

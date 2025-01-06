@@ -15,11 +15,9 @@ class NetworkConnectionHandler {
         var flags = SCNetworkReachabilityFlags()
         SCNetworkReachabilityGetFlags(self.mReachability!, &flags)
         if isNetworkReachable(with: flags) {
-            //            print("flags:\(flags)")
             return true
         } else {
             return false
-            // return "No Connection"
         }
     }
     func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {

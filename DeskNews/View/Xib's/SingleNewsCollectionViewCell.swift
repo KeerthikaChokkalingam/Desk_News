@@ -28,11 +28,11 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
         newsImageView.contentMode = .scaleAspectFill
         newsImageView.layer.cornerRadius = 15
         previewButton.layer.cornerRadius = 15
-        let urlString = apiResponse.urlToImage
+        let urlString = apiResponse.image
         if urlString != nil && Utils().isValidURL((urlString!)) {
             previewButton.isHidden = true
             newsImageView.isHidden = false
-            newsImageView.loadImage(urlString: apiResponse.urlToImage ?? "")
+            newsImageView.loadImage(urlString: apiResponse.image ?? "")
         } else {
             newsImageView.isHidden = true
             previewButton.isHidden = false
