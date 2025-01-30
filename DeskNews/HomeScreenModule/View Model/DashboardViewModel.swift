@@ -17,11 +17,18 @@ class DashboardViewModel: NSObject {
             if signleArticleSet.title != nil {
                 cell.updateCell(apiResponse: signleArticleSet)
                 cell.learnMoreButton.accessibilityIdentifier = signleArticleSet.url
+                cell.contentLabelContentView.applyBlurEffectToView()
+                cell.newsDayView.applyBlurEffectToView()
+                cell.learnMoreButton.applyBlurEffectToView()
+            } else {
+                cell.backGroundView.backgroundColor = .white
+                cell.setUpUI()
             }
             return cell
         case 1:
             guard let cell = baseTableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPathValue) as? TitleTableViewCell else {return UITableViewCell()}
             if signleArticleSet.title != nil {
+                cell.liveNewsLabel.hideSkeleton()
                 cell.liveNewsLabel.font = UIFont.boldSystemFont(ofSize: 17)
                 cell.liveNewsLabel.text = "Live News Around You"
             }
@@ -29,6 +36,7 @@ class DashboardViewModel: NSObject {
         default:
             guard let cell = baseTableView.dequeueReusableCell(withIdentifier: "LiveNewsContentTableViewCell", for: indexPathValue) as? LiveNewsContentTableViewCell else {return UITableViewCell()}
             if newsCollections.count != 0 {
+                cell.singleNewsListCollections.hideSkeleton()
                 cell.getValuesFromApiRoadCollections(apiResponse: newsCollections)
             }
             return cell

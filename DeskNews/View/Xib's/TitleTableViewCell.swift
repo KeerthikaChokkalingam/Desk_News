@@ -16,6 +16,8 @@ class TitleTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = Thememanager.shared.mainBgColor
         liveNewsLabel.textColor = Thememanager.shared.tabBarTintColor
         self.childView.backgroundColor = Thememanager.shared.mainBgColor
+        self.liveNewsLabel.isSkeletonable = true
+        self.liveNewsLabel.showAnimatedGradientSkeleton()
     }
     
     override func awakeFromNib() {

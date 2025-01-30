@@ -36,6 +36,8 @@ extension LiveNewsContentTableViewCell {
         layout.scrollDirection = .horizontal
         singleNewsListCollections.collectionViewLayout = layout
         singleNewsListCollections.register(UINib(nibName: "SingleNewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SingleNewsCollectionViewCell")
+        singleNewsListCollections.isSkeletonable = true
+        singleNewsListCollections.showAnimatedSkeleton()
     }
     func getValuesFromApiRoadCollections(apiResponse: [ArticalSet]) {
         collectionValues = apiResponse
@@ -61,6 +63,7 @@ extension LiveNewsContentTableViewCell: UICollectionViewDelegate, UICollectionVi
         cell.newsAuthorNameLabel.textColor = Thememanager.shared.mainBgColor
         cell.newsPublishedTimeLabel.textColor = Thememanager.shared.mainBgColor
         if collectionValues.count != 0 {
+            cell.mainContentView.hideSkeleton()
             cell.loadValues(apiResponse: collectionValues[indexPath.row])
         }
         return cell

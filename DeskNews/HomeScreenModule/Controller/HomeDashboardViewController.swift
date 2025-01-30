@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class HomeDashboardViewController: UIViewController {
     
@@ -18,8 +19,8 @@ class HomeDashboardViewController: UIViewController {
     var responseNews: HeadLinesResponse?
     var apiDataValues: ArticalSet?
     var apiDataCollectionValues = [ArticalSet]()
-    var indicator = UIActivityIndicatorView()
-    var refresher: Bool = false
+//    var indicator = UIActivityIndicatorView()
+//    var refresher: Bool = false
     var apiHelper: APIHandler?
     
     override func viewDidLoad() {
@@ -44,9 +45,9 @@ extension HomeDashboardViewController {
         liveNewsList.register(UINib(nibName: "NewsOfTheDayFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsOfTheDayFeedTableViewCell")
         liveNewsList.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTableViewCell")
         liveNewsList.register(UINib(nibName: "LiveNewsContentTableViewCell", bundle: nil), forCellReuseIdentifier: "LiveNewsContentTableViewCell")
-        indicator = Utils().setUpLoader(sender: view)
-        let refresher = Utils().addRefreshController(sender: liveNewsList)
-        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+//        indicator = Utils().setUpLoader(sender: view)
+//        let refresher = Utils().addRefreshController(sender: liveNewsList)
+//        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
     }
     func setUpColors() {
@@ -54,8 +55,12 @@ extension HomeDashboardViewController {
         self.view.backgroundColor = Thememanager.shared.mainBgColor
         self.liveNewsList.backgroundColor = Thememanager.shared.mainBgColor
         self.tableViewBgView.backgroundColor = Thememanager.shared.mainBgColor
+        self.titleLbl.clipsToBounds = true
+        self.titleLbl.layer.cornerRadius = 20
         self.titleLbl.textColor = Thememanager.shared.tabBarTintColor
         self.seperatorView.backgroundColor = Thememanager.shared.tabBarTintColor
+        self.titleLbl.isSkeletonable = true
+        self.liveNewsList.isSkeletonable = true
     }
     func apiCall(country: String, category: String){
         apiHelper = APIHandler()
@@ -65,6 +70,10 @@ extension HomeDashboardViewController {
                 guard let responseData else {return}
                 self.responseNews = responseData
                 self.seperateDataReloadTable()
+                DispatchQueue.main.async {
+                    self.titleLbl.hideSkeleton()
+                    self.liveNewsList.hideSkeleton()
+                }
             } else {
                 guard let errorMessagge else {return}
                 self.errorAlert(message: errorMessagge)
@@ -77,10 +86,13 @@ extension HomeDashboardViewController {
         var countryValue: String = ""
         var categoryValue: String = ""
         if NetworkConnectionHandler().checkReachable() {
-            if refresher {
-            } else {
-                Utils().startLoading(sender: indicator, wholeView: view)
-            }
+//            if refresher {
+//            } else {
+                self.titleLbl.showAnimatedGradientSkeleton()
+//            self.liveNewsList.showAnimatedSkeleton()
+            self.liveNewsList.showAnimatedGradientSkeleton()
+//                Utils().startLoading(sender: indicator, wholeView: view)
+//            }
             if let counrty = UserDefaults.standard.string(forKey: "country") {
                 countryValue = counrty
                 if let categories = UserDefaults.standard.string(forKey: "categories") {
@@ -95,22 +107,22 @@ extension HomeDashboardViewController {
                 }
             }
             if categoryValue != "" && countryValue != "" {
-                apiCall(country: countryValue, category: categoryValue)
+//                apiCall(country: countryValue, category: categoryValue)
                 
             } else if countryValue == "" && categoryValue != "" {
-                apiCall(country: "in", category: categoryValue)
+//                apiCall(country: "in", category: categoryValue)
                 
             } else if countryValue == "" && categoryValue != "" {
-                apiCall(country: countryValue, category: "general")
+//                apiCall(country: countryValue, category: "general")
             } else {
-                apiCall(country: "in", category: "general")
+//                apiCall(country: "in", category: "general")
             }
         } else {
             internetFailure(childTableView: liveNewsList)
         }
     }
     @objc func refresh() {
-        refresher = true
+//        refresher = true
         getNewsApiCall()
     }
     func seperateDataReloadTable() {
@@ -125,8 +137,8 @@ extension HomeDashboardViewController {
         }
         apiDataCollectionValues = unique
         DispatchQueue.main.async {
-            Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
-            Utils().endLoading(sender: self.indicator, wholeView: self.view ?? UIView())
+//            Utils().endRefreshController(sender: self.liveNewsList ?? UITableView())
+//            Utils().endLoading(sender: self.indicator, wholeView: self.view ?? UIView())
             self.liveNewsList.reloadData()
         }
     }

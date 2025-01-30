@@ -21,6 +21,8 @@ class SingleNewsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         previewButton.isHidden = true
         mainContentView.layer.cornerRadius = 15
+        mainContentView.isSkeletonable = true
+        mainContentView.showAnimatedSkeleton()
     }
     func loadValues(apiResponse: ArticalSet) {
         newsImageView.clipsToBounds = true

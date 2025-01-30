@@ -20,8 +20,8 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var backGroundView: UIView!
     
     override func awakeFromNib() {
-        newsDayView.isHidden = true
-        learnMoreButton.isHidden = true
+//        newsDayView.isHidden = true
+//        learnMoreButton.isHidden = true
         selectionStyle = .none
         super.awakeFromNib()
     }
@@ -33,49 +33,60 @@ class NewsOfTheDayFeedTableViewCell: UITableViewCell {
     }
     
     func setUpUI() {
-        newsDayView.isHidden = false
-        learnMoreButton.isHidden = false
+//        newsDayView.isHidden = false
+//        learnMoreButton.isHidden = false
         backGroundView.layer.cornerRadius = 25
         contentImageView.layer.cornerRadius = 25
         newsDayView.clipsToBounds = true
         newsDayView.layer.cornerRadius = 20
         learnMoreButton.layer.cornerRadius = 20
         newsOfDayLabel.layer.cornerRadius = 20
-        contentLabelContentView.applyBlurEffectToView()
-        newsDayView.applyBlurEffectToView()
-        learnMoreButton.applyBlurEffectToView()
         contentLabelContentView.clipsToBounds = true
         newsDayView.clipsToBounds = true
         learnMoreButton.clipsToBounds = true
         contentLabelContentView.layer.cornerRadius = 15
         newsContentLabel.layer.cornerRadius = 15
         newsDayView.layer.cornerRadius = 15
+        contentLabelContentView.layer.cornerRadius = 15
+        contentLabelContentView.clipsToBounds = true
         learnMoreButton.layer.cornerRadius = 15
         learnMoreButton.addTarget(self, action: #selector(goToNewsWebTab(_:)), for: .touchUpInside)
+        newsDayView.isSkeletonable = true
+        newsDayView.showAnimatedGradientSkeleton()
+        learnMoreButton.isSkeletonable = true
+        learnMoreButton.showAnimatedSkeleton()
+//        contentLabelContentView.isSkeletonable = true
+//        contentLabelContentView.showAnimatedGradientSkeleton()
+        backGroundView.isSkeletonable = true
+        backGroundView.showAnimatedSkeleton()
     }
     func updateCell(apiResponse: ArticalSet) {
         setUpUI()
+        newsDayView.hideSkeleton()
+        learnMoreButton.hideSkeleton()
+        contentLabelContentView.hideSkeleton()
+        contentImageView.hideSkeleton()
         newsContentLabel.text = apiResponse.title
-        contentImageView.contentMode = .scaleAspectFill
+        backGroundView.contentMode = .scaleAspectFill
         if apiResponse.image != nil && apiResponse.image != "" {
             backGroundView.backgroundColor = .white
-            contentImageView.isHidden = false
+//            contentImageView.isHidden = false
             contentImageView.loadImage(urlString: apiResponse.image ?? "")
         } else {
-            contentImageView.isHidden = true
-            var animationView: LottieAnimationView?
-            animationView = .init(name: "no_data.json")
-            animationView!.frame = self.backGroundView.bounds
-            animationView!.contentMode = .scaleAspectFill
-            animationView!.loopMode = .loop
-            animationView!.animationSpeed = 0.5
-            animationView!.layer.cornerRadius = 15
-            self.backGroundView.backgroundColor = UIColor().hexStringToUIColor(hex: "#FFFFFF")
-            self.backGroundView.addSubview(animationView!)
-            self.backGroundView.bringSubviewToFront(self.learnMoreButton)
-            self.backGroundView.bringSubviewToFront(self.contentLabelContentView)
-            self.backGroundView.bringSubviewToFront(self.newsDayView)
-            animationView!.play()
+//            contentImageView.image = UIImage(named: "images")
+//            var animationView: LottieAnimationView?
+//            animationView = .init(name: "no_data.json")
+//            animationView!.frame = self.backGroundView.bounds
+//            animationView!.contentMode = .scaleAspectFill
+//            animationView!.loopMode = .loop
+//            animationView!.animationSpeed = 0.5
+//            animationView!.layer.cornerRadius = 15
+//            self.backGroundView.backgroundColor = UIColor().hexStringToUIColor(hex: "#FFFFFF")
+//            self.backGroundView.addSubview(animationView!)
+//            self.backGroundView.bringSubviewToFront(self.learnMoreButton)
+//            self.backGroundView.bringSubviewToFront(self.contentLabelContentView)
+//            self.backGroundView.bringSubviewToFront(self.newsDayView)
+//            animationView!.play()
         }
     }
     @objc func goToNewsWebTab(_ sender: UIButton) {

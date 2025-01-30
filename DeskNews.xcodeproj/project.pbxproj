@@ -51,6 +51,7 @@
 		7F64A1142B9D79F5001EA4C2 /* CustomDropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F64A1132B9D79F5001EA4C2 /* CustomDropdownView.swift */; };
 		7F699AFF2BA07E0D005AAE87 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F699AFE2BA07E0D005AAE87 /* AlertView.swift */; };
 		7F7CD0C72B87A53600A8D9A7 /* Thememanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7CD0C62B87A53600A8D9A7 /* Thememanager.swift */; };
+		7F87034B2D42890600429A21 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 7F87034A2D42890600429A21 /* SkeletonView */; };
 		7FB3D47A2B3C4C3600B317FA /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3D4782B3C4C3600B317FA /* DropDownTableViewCell.swift */; };
 		7FB3D47B2B3C4C3600B317FA /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB3D4792B3C4C3600B317FA /* DropDownTableViewCell.xib */; };
 		852BF242C3E1E689FCF2B0AB /* Pods_DeskNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED57FA577C974A7E5719F794 /* Pods_DeskNewsTests.framework */; };
@@ -138,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F87034B2D42890600429A21 /* SkeletonView in Frameworks */,
 				3BB13F8EB0025ACE60C11726 /* Pods_DeskNews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +460,9 @@
 			dependencies = (
 			);
 			name = DeskNews;
+			packageProductDependencies = (
+				7F87034A2D42890600429A21 /* SkeletonView */,
+			);
 			productName = DeskNews;
 			productReference = 376EE1EC2A94B4A9000611A9 /* DeskNews.app */;
 			productType = "com.apple.product-type.application";
@@ -533,6 +538,9 @@
 				Base,
 			);
 			mainGroup = 376EE1E32A94B4A9000611A9;
+			packageReferences = (
+				7F8703492D42890600429A21 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+			);
 			productRefGroup = 376EE1ED2A94B4A9000611A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1072,6 +1080,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7F8703492D42890600429A21 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7F87034A2D42890600429A21 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F8703492D42890600429A21 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 376EE1E42A94B4A9000611A9 /* Project object */;
 }
